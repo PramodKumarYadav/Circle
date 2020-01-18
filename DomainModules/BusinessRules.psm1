@@ -1,3 +1,38 @@
+Function Get-VoiceRecords{
+    [CmdletBinding()]
+    Param(
+        [Parameter(Mandatory=$True, HelpMessage="Path of CSV file that contains all logs (Data/Voice)")]
+        [String] $PathOfInputCSV,
+
+        [Parameter(Mandatory=$True, HelpMessage="Path of CSV file that contains Only Voice logs and relevant columns")]
+        [String] $PathOfOutputCSV,
+
+        [Parameter(Mandatory=$True, HelpMessage="Column name to Filter Voice records")]
+        [String[]] $FilterColumnName,
+
+        [Parameter(Mandatory=$True, HelpMessage="Column value to Filter Voice records")]
+        [String[]] $FilterRowValue,
+
+        [Parameter(Mandatory=$True, HelpMessage="Column Names to Select")]
+        [String[]] $ColumnsToSelect
+    )
+    Begin{}
+    Process{
+        # Input CSV file contains both data and voice information. Filter out only relevant records and columns
+        
+        # Filter voice records
+        $PSvoiceRecordsArr = Import-Csv $PathOfInputCSV | Where-Object {$_.$FilterColumnName -eq $FilterRowValue} 
+        
+        # Filter relevant columns
+        $PSvoiceRowsColumnsArr = $PSvoiceRecordsArr | Select-Object -Property $ColumnsToSelect
+
+        # Export this voiceRecordsCSV in results folder as csv file
+        Export-PSObjectArrayToCSV -PSObjectArray $PSvoiceRowsColumnsArr -PathOfCSV  $PathOfOutputCSV   
+    }
+    End{}
+
+    
+}
 # Tested OKay
 Function Get-UniquePhoneNumbers{
     [CmdletBinding()]
