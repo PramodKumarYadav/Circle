@@ -24,32 +24,6 @@ Function Get-GroupValuesForACSVColumn{
     End{}
 }
 
-Function Set-CallStatistics2{
-    [CmdletBinding()]
-    Param(
-        [Parameter(Mandatory=$True, HelpMessage="Path of CSV file that contains call logs")]
-        [String[]] $PhoneNumbers,
-
-        [Parameter(Mandatory=$True, HelpMessage="The column name based on which you want to fetch unique values")]
-        [String[]] $CallFrequency 
-    )
-    Begin{}
-    Process{
-        $PSObjectArray = @()
-
-        for($i = 0; $i -lt $PhoneNumbers.Count; $i++){
-            $PSitem = [psobject][ordered]@{
-                        'PhoneNumber' = $PhoneNumbers[$i];
-                        'CallFrequency' = $CallFrequency[$i]
-                        }
-            $PSObjectArray += $PSitem
-        }
-        
-        return $PSObjectArray 
-    }
-    End{}
-}
-
 # Tested OKay
 Function Convert-PSObjectArrayToJSON{
     [CmdletBinding()]

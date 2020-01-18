@@ -33,7 +33,7 @@ Function Get-CallFrequency{
 }
 
 # Tested OKay
-Function Set-CallStatistics{
+Function Get-CallStatistics{
     [CmdletBinding()]
     Param(
         [Parameter(Mandatory=$True, HelpMessage="Path of CSV file that contains call logs")]
@@ -44,11 +44,13 @@ Function Set-CallStatistics{
     )
     Begin{}
     Process{
-        $PSObjectArray = for($i = 0; $i -lt $PhoneNumbers.Count; $i++){
-            [psobject][ordered]@{
-                'PhoneNumber' = $PhoneNumbers[$i];
-                'CallFrequency' = $CallFrequency[$i]
-                }
+        $PSObjectArray = @()
+        for($i = 0; $i -lt $PhoneNumbers.Count; $i++){
+            $PSitem = [psobject][ordered]@{
+                        'PhoneNumber' = $PhoneNumbers[$i];
+                        'CallFrequency' = $CallFrequency[$i]
+                        }
+            $PSObjectArray += $PSitem
         }
         
         return $PSObjectArray 
