@@ -40,20 +40,23 @@ Function Convert-PSObjectArrayToJSON{
 }
 
 # Tested OKay
-Function Convert-PSObjectArrayToCSV{
+Function Export-PSObjectArrayToCSV{
     [CmdletBinding()]
     Param(
         [parameter(Mandatory,ValueFromPipeline)]
-        [object[]]$PSObjectArray
+        [object[]]$PSObjectArray,
+
+        [Parameter(Mandatory=$True, HelpMessage="Path of CSV file to export")]
+        [String] $PathOfCSV
     )
     Begin{}
     Process{      
-        $csv = $PSObjectArray | ConvertTo-Csv -NoTypeInformation
-        return $csv 
+        $PSObjectArray | Export-Csv $PathOfCSV -NoTypeInformation
     }
     End{}
 }
 
+# Not yet tested 
 Function Convert-PSObjectArrayToXML{
     [CmdletBinding()]
     Param(
