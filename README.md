@@ -28,7 +28,8 @@ However, I think once I am done with it, with minor modifications, you would be 
 To run this code, download the project and run main.ps1
 Dummy project will run with the data in the file @ TestData/numbers.csv
 
-# - [ ] ToDo 2
+# Manual Steps
+- [] To define yet 
 If you want to run with your real life data, 
 1. Go to lycamobile.nl. Download your calls logs pdf. 
 2. Run this code to convert pdf to csv (details to be added)
