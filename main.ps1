@@ -5,4 +5,4 @@ foreach($module in $modules){
     Import-Module $module -Force
 }
 
-Get-Circle -PathOfCSV "$currentDir\TestData\Number.csv"
+Get-Circle -PathOfInputCSVFile "$currentDir\TestData\Number-Full.csv" -SaveAsJSON -SaveAsCSV -SaveAsTable
