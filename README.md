@@ -25,7 +25,7 @@ However, I think once I am done with it, with minor modifications, you would be 
 8. - [x] Display the result as json/csv/table (what you like)
 
 # Execute 
-To run this code, download the project and run main.ps1
+* To run this code, download the project and run main.ps1
     * Dummy project will run with the data in the file @ TestData/numbers.csv
 
 # Manual Steps
