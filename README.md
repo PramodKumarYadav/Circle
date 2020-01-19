@@ -3,10 +3,21 @@ This project is to parse lyca mobile call logs and give me information about who
 
 Since I am using lycamobile, the project is customised around it. However, I think once I am done with it, with minor modifications, you would be able to run it for your telephone statements as well.
 
-# For now
-For first POC, the focus is to make it work for custom lycamobile call statements. 
+# Design
+-> [ToDo] Download account statement from Lycamobile 
+    -> The only option is to get a PDF download.
+-> [ToDo] Convert pdf to txt document.
+-> [ToDo] Filter out the column names and data records 
+    -> There is other unnecessary information as well. We need to filter that out.
+-> [ToDo] Convert this filtered information into a csv file that we can now work with.
+-> [Done] Get the unique called phone numbers from this csv file.
+-> [Done] Get the frequency (count of calls per phone number) from this csv file.
+-> [Done] Make a matrix with these two parameters 
+    -> Goal is to create this matrix is such a way, that it can be used to create any output format as desired
+-> [Done] Display the result as json/csv/table (what you like)
 
-# To run this code, download the project and run main.ps1
+# Execute 
+To run this code, download the project and run main.ps1
 Dummy project will run with the data in the file @ TestData/numbers.csv
 If you want to run with your real life data, 
 -> Go to lycamobile.nl. Download your calls logs pdf. 
