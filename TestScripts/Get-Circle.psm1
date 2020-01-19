@@ -25,7 +25,7 @@ function Get-Circle{
                                 -RecordsRegExPattern @("(DATA|VOICE),.*")
 
         # CSV file contains both data and voice information. Filter out only relevant records and columns
-        $PathOfVoiceRecords = "$PathOfOutputDir/VoiceRecords.csv "
+        $PathOfVoiceRecords = "$PathOfOutputDir/OnlyVoiceRecords.csv "
         Get-VoiceRecords    -PathOfInputCSV "$PathOfCSVDataFile" `
                             -PathOfOutputCSV "$PathOfVoiceRecords" `
                             -FilterColumnName 'Call Type' `
@@ -35,17 +35,20 @@ function Get-Circle{
         # Get all Called phone numbers from the csv
         $PhoneColumnName = 'Dailled number' # Well this incorrect spelling is what you get when you download data from lycamobiles website
         $PhoneNumbers = Get-UniquePhoneNumbers -PathOfCSV "$PathOfVoiceRecords " -ColumnName "$PhoneColumnName"
-        Write-Host $PhoneNumbers
+        Write-Verbose "Unique phone numbers: $PhoneNumbers"
 
         # Get the frequency of calls
         $CallFrequency = Get-CallFrequency -PathOfCSV "$PathOfVoiceRecords " -ColumnName "$PhoneColumnName"
-        Write-Host $CallFrequency
+        Write-Verbose "Corresponding call frequency: $CallFrequency"
 
         # Get the call statistics matrix based on phone numbers and their frequency
         $PSOrderedDictionaryArray  = Get-CallStatistics -PhoneNumbers $PhoneNumbers -CallFrequency $CallFrequency
 
         # Create output in the requested format(s) by user
         Save-ResultInExpectedFormat -PSOrderedDictionaryArray $PSOrderedDictionaryArray -SaveAsJSON:$SaveAsJSON -SaveAsCSV:$SaveAsCSV -SaveAsTable:$SaveAsTable -PathOfOutputDir $PathOfOutputDir
+        
+        # Also show the result as a table (for a quick look in powershell console)
+        $PSOrderedDictionaryArray | ForEach-Object {[PSCustomObject]$_} | Format-Table -AutoSize 
     }
     End{}
 }
