@@ -15,7 +15,7 @@ However, I think once I am done with it, with minor modifications, you would be 
 1. - [ ] Download account statement from Lycamobile 
     * The only option is to get a PDF download.
 2. - [ ] Convert pdf to txt document.
-3. - [ ] Filter out the column names and data records 
+3. - [ ] Filter out the column header record and data records 
     * There is other unnecessary information as well. We need to filter that out.
 4. - [ ] Convert this filtered information into a csv file that we can now work with.
 5. - [x] Get the unique called phone numbers from this csv file.
