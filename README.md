@@ -1,10 +1,10 @@
-# Circle :phone:
+# :phone: Circle 
 
 The idea behind the project is to see how our social health is. We have hundreds of contacts in our call list and yet there are often a handful of people we call.
 
-This tool, will give you insight on who in your friends and family are most closest to you and thus by contrast, who are the people who were once very close to you but you never or seldom call them.
+This tool, will give you insight on who in your friends and family are most closest to you and thus by contrast, who are the people who were once very close to you but you never or seldom call.
 
-Hope this insight, helps you with what you want to do with this information. 
+Hope this insight, helps you bring back closer people who matter to you.
 
 # Scope
 Since I have a lycamobile connection, the scope of the project (atleast at this moment) is to parse lyca mobile call logs and create insights from it.
@@ -12,9 +12,9 @@ Since I have a lycamobile connection, the scope of the project (atleast at this 
 However, I think once I am done with it, with minor modifications, you would be able to run it for your telephone statements as well with other service providers as well.
 
 # Design
-- [ ] Download account statement from Lycamobile 
+1. - [ ] Download account statement from Lycamobile 
     * The only option is to get a PDF download.
-- [ ] Convert pdf to txt document.
+2. - [ ] Convert pdf to txt document.
 - [ ] Filter out the column names and data records 
     * There is other unnecessary information as well. We need to filter that out.
 - [ ] Convert this filtered information into a csv file that we can now work with.
