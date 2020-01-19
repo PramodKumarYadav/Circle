@@ -36,7 +36,7 @@ If you want to run with your real life data,
 3. Trim unneccessary information (details to be added)
 4. Once you have a proper csv file, copy and put it in the TestData folder say as TestData/myCallLogs.csv
 5. you can run the main.ps1 file now by giving this file name in the function mentioned in main.
-    Get-Circle -PathOfCSV "$currentDir\TestData\myCallLogs.csv"
+    * Get-Circle -PathOfCSV "$currentDir\TestData\myCallLogs.csv"
 6. You should now see results in powershell window (and I will add the summary to a out file in TestResults folder in due time)
 
 # Reference read me file
