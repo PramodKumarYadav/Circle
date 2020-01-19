@@ -26,7 +26,7 @@ However, I think once I am done with it, with minor modifications, you would be 
 
 # Execute 
 To run this code, download the project and run main.ps1
-Dummy project will run with the data in the file @ TestData/numbers.csv
+    * Dummy project will run with the data in the file @ TestData/numbers.csv
 
 # Manual Steps
 - [] To define yet 
