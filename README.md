@@ -15,14 +15,14 @@ However, I think once I am done with it, with minor modifications, you would be 
 1. - [ ] Download account statement from Lycamobile 
     * The only option is to get a PDF download.
 2. - [ ] Convert pdf to txt document.
-- [ ] Filter out the column names and data records 
+3. - [ ] Filter out the column names and data records 
     * There is other unnecessary information as well. We need to filter that out.
-- [ ] Convert this filtered information into a csv file that we can now work with.
-- [x] Get the unique called phone numbers from this csv file.
-- [x] Get the frequency (count of calls per phone number) from this csv file.
-- [x] Make a matrix with these two parameters 
+4. - [ ] Convert this filtered information into a csv file that we can now work with.
+5. - [x] Get the unique called phone numbers from this csv file.
+6. - [x] Get the frequency (count of calls per phone number) from this csv file.
+7. - [x] Make a matrix with these two parameters 
     * Goal is to create this matrix is such a way, that it can be used to create any output format as desired
-- [x] Display the result as json/csv/table (what you like)
+8. - [x] Display the result as json/csv/table (what you like)
 
 # Execute 
 To run this code, download the project and run main.ps1
