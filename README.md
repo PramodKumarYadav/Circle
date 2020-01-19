@@ -8,21 +8,35 @@ Hope this helps in bringing friends and family closer to you.
 
 # Scope
 Since I have a lycamobile connection, the scope of the project (atleast at this moment) is to parse lyca mobile call logs and create insights from it.
-
 However, I think once I am done with it, with minor modifications, you would be able to run it for your telephone statements as well with other service providers as well.
 
 # Design
 1. - [ ] Download account statement from Lycamobile 
-    * The only option is to get a PDF download.
+    * Note: The only option is to get a PDF download.
+    * Input: Lycamobile login details of user.
+    * Output: PDF call logs file.
 2. - [ ] Convert pdf to txt document.
+    * Input: PDF call logs file
+    * Output: CSV file with calls logs and some garbage information.
 3. - [x] Filter out the column header record and data records 
-    * There is other unnecessary information as well. We need to filter that out.
+    * Input: CSV file with calls logs and some garbage information.
+    * Output: A proper CSV file with all call logs (Data/Voice) information.
 4. - [x] Convert this filtered information into a csv file that we can now work with.
+    * Input: A proper CSV file with all call logs (Data/Voice) information.
+    * Output: A proper CSV file with only relevant information for call analysis i.e. (Voice) records.
 5. - [x] Get the unique called phone numbers from this csv file.
+    * Input: A proper CSV file with only relevant information for call analysis i.e. (Voice) records.
+    * Output: An array of Unique phone numbers called by the user.
 6. - [x] Get the frequency (count of calls per phone number) from this csv file.
+    * Input: A proper CSV file with only relevant information for call analysis i.e. (Voice) records.
+    * Output: An array of frequency (count of calls/per phone number).
 7. - [x] Make a matrix with these two parameters 
-    * Goal is to create this matrix is such a way, that it can be used to create any output format as desired
+    * Note: Goal is to create this matrix is such a way, that it can be used to create any output format as desired
+    * Input: An array of Unique phone numbers and their corresponding frequency array
+    * Output: A hastable collection array that can be converted to any format (as per the request of user)
 8. - [x] Display the result as json/csv/table (what you like)
+    * Input: A hastable collection array that can be converted to any format (as per the request of user)
+    * Output: Based on the choice made by user in the main.ps1, it could be a JSON/CSV/Table output (All outputs or any combination, possible at any given time)
 
 # Execute 
 * To run this code, download the project and run main.ps1
