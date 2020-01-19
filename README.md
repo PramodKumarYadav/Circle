@@ -53,7 +53,7 @@ If you want to run with your real life data,
     * Get-Circle -PathOfCSV "$currentDir\TestData\myCallLogs.csv"
 6. You should now see results in powershell window (and I will add the summary to a out file in TestResults folder in due time)
 
-# Reference read me file
+# Reference
 * [Readme markdown-cheatsheet](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md "Readme markdown-cheatsheet")
 * [emoji-cheat-sheet](https://www.webfx.com/tools/emoji-cheat-sheet/ "emoji-cheat-sheet")
 
