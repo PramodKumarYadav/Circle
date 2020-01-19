@@ -4,7 +4,7 @@ The idea behind the project is to see how our social health is. We have hundreds
 
 This tool, will give you insight on who in your friends and family are most closest to you and thus by contrast, who are the people who were once very close to you but you never or seldom call.
 
-Hope this insight, helps you bring back closer people who matter to you.
+Hope this helps in bringing back friends and family closer to you.
 
 # Scope
 Since I have a lycamobile connection, the scope of the project (atleast at this moment) is to parse lyca mobile call logs and create insights from it.
