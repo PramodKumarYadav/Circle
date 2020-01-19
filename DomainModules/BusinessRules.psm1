@@ -1,3 +1,30 @@
+Function Get-CallLogsDataAsCSV{
+    [CmdletBinding()]
+    Param(
+        [Parameter(Mandatory=$True, HelpMessage="Path of CSV file that contains call logs")]
+        [String] $PathOfInputCSVFile,
+
+        [Parameter(Mandatory=$True, HelpMessage="Path of CSV file that contains call logs")]
+        [String] $PathOfOutputCSVFile,
+
+        [Parameter(Mandatory=$false, HelpMessage="The column name based on which you want to fetch unique values")]
+        [String[]] $HeaderRegExPattern = @("Call Type,Customer number"), # Default Regex to filter lycamobile header
+
+        [Parameter(Mandatory=$false, HelpMessage="The column name based on which you want to fetch unique values")]
+        [String[]] $RecordsRegExPattern = @("(DATA|VOICE),.*") # Default Regex to filter lycamobile records
+    )
+    Begin{}
+    Process{
+        # Get Header records and add first header record to Target data file formatted as csv
+        $PSHeaderRecordsArr = Get-Content "$PathOfInputCSVFile" | Select-String -Pattern $HeaderRegExPattern 
+        Set-Content -Path $PathOfOutputCSVFile -Value $PSHeaderRecordsArr[0]
+
+        # Get Data records and add to Target data file formatted as csv
+        $PSDataRecordsArr = Get-Content "$PathOfInputCSVFile" | Select-String -Pattern $RecordsRegExPattern  
+        Add-Content -Path $PathOfOutputCSVFile -Value $PSDataRecordsArr    
+    }
+    End{}
+}
 Function Get-VoiceRecords{
     [CmdletBinding()]
     Param(
@@ -27,7 +54,7 @@ Function Get-VoiceRecords{
         $PSvoiceRowsColumnsArr = $PSvoiceRecordsArr | Select-Object -Property $ColumnsToSelect
 
         # Export this voiceRecordsCSV in results folder as csv file
-        Export-PSObjectArrayToCSV -PSObjectArray $PSvoiceRowsColumnsArr -PathOfCSV  $PathOfOutputCSV   
+        Export-PSCustomObjectArrayToCSV -PSCustomObjectArray $PSvoiceRowsColumnsArr -PathOfCSV  $PathOfOutputCSV   
     }
     End{}
 
@@ -79,16 +106,16 @@ Function Get-CallStatistics{
     )
     Begin{}
     Process{
-        $PSObjectArray = @()
+        $PSOrderedDictionaryArray = @()
         for($i = 0; $i -lt $PhoneNumbers.Count; $i++){
             $PSitem = [psobject][ordered]@{
                         'PhoneNumber' = $PhoneNumbers[$i];
                         'CallFrequency' = $CallFrequency[$i]
                         }
-            $PSObjectArray += $PSitem
+            $PSOrderedDictionaryArray += $PSitem
         }
         
-        return $PSObjectArray 
+        return $PSOrderedDictionaryArray 
     }
     End{}
 }
