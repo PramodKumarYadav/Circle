@@ -56,6 +56,8 @@ If you want to run with your real life data,
 # Reference
 * [Readme markdown-cheatsheet](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md "Readme markdown-cheatsheet")
 * [emoji-cheat-sheet](https://www.webfx.com/tools/emoji-cheat-sheet/ "emoji-cheat-sheet")
+* [powershell-pdftables-api](https://github.com/pdftables/powershell-pdftables-api )
+* [To-get-your-API-key-from-PDFTables](https://pdftables.com/pdf-to-excel-api)
 
 
 
