@@ -22,7 +22,7 @@ function Get-Circle{
         Get-CallLogsDataAsCSV   -PathOfInputCSVFile "$PathOfInputCSVFile" `
                                 -PathOfOutputCSVFile  "$PathOfCSVDataFile" `
                                 -Header 'Call Type,Customer number,Dailled number,Date,Time,CallDuration,Cost' `
-                                -DataRecordsRegExPattern @("(DATA|VOICE),.*")
+                                -RecordsRegEx @("(DATA|VOICE),.*")
 
         # CSV file contains both data and voice information. Filter out only relevant records and columns
         $PathOfVoiceRecords = "$PathOfOutputDir/OnlyVoiceRecords.csv "

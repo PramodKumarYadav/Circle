@@ -8,19 +8,18 @@ Function Get-CallLogsDataAsCSV{
         [String] $PathOfOutputCSVFile,
 
         [Parameter(Mandatory=$false, HelpMessage="The column name based on which you want to fetch unique values")]
-        [String[]] $HeaderRegExPattern = @("Call Type,Customer number"), # Default Regex to filter lycamobile header
+        [String] $Header,
 
         [Parameter(Mandatory=$false, HelpMessage="The column name based on which you want to fetch unique values")]
-        [String[]] $RecordsRegExPattern = @("(DATA|VOICE),.*") # Default Regex to filter lycamobile records
+        [String[]] $RecordsRegEx = @("(DATA|VOICE),.*") # Default Regex to filter lycamobile records
     )
     Begin{}
     Process{
         # Get Header records and add first header record to Target data file formatted as csv
-        $PSHeaderRecordsArr = Get-Content "$PathOfInputCSVFile" | Select-String -Pattern $HeaderRegExPattern 
-        Set-Content -Path $PathOfOutputCSVFile -Value $PSHeaderRecordsArr[0]
+        Set-Content -Path $PathOfOutputCSVFile -Value $Header
 
         # Get Data records and add to Target data file formatted as csv
-        $PSDataRecordsArr = Get-Content "$PathOfInputCSVFile" | Select-String -Pattern $RecordsRegExPattern  
+        $PSDataRecordsArr = Get-Content "$PathOfInputCSVFile" | Select-String -Pattern $RecordsRegEx  
         Add-Content -Path $PathOfOutputCSVFile -Value $PSDataRecordsArr    
     }
     End{}
