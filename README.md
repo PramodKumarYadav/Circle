@@ -65,7 +65,7 @@ Worked Okay but discarded due to the fact that I want to try open source solutio
 * [To-get-your-API-key-from-PDFTables](https://pdftables.com/pdf-to-excel-api)
 * [how-to-sign-external-scripts-to-be-able-to-run-on-your-system](https://devblogs.microsoft.com/scripting/hey-scripting-guy-how-can-i-sign-windows-powershell-scripts-with-an-enterprise-windows-pki-part-2-of-2/)
 
-*[Tool-used-by-lycamobile-to-pdf-convert-their-documents](https://tcpdf.org/) 
+* [Tool-used-by-lycamobile-to-pdf-convert-their-documents](https://tcpdf.org/) 
 
 
 
