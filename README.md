@@ -46,7 +46,7 @@ However, I think once I am done with it, with minor modifications, you would be 
 * To run this code with dummy data, download the project and run main.ps1
     * Dummy project will run with the data in the file @ TestData/OriginalPDF2CSVConvertedFile.csv
 
-# To Execute with Real data (Your lycamobile statement)
+# Execute with Real data (Your lycamobile statement)
 If you want to run with your real life data, 
 1. Go to lycamobile.nl. Login with your credentials and download your calls logs pdf. 
 2. You can convert the pdf to a csv file using this website: https://pdftables.com/
