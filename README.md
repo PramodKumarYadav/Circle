@@ -56,8 +56,13 @@ If you want to run with your real life data,
 # Reference
 * [Readme markdown-cheatsheet](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md "Readme markdown-cheatsheet")
 * [emoji-cheat-sheet](https://www.webfx.com/tools/emoji-cheat-sheet/ "emoji-cheat-sheet")
+
+I first tried below option but due to limited option to use this only for first 50 pages, I couldnt use this anymore. 
+Worked Okay but discarded due to the fact that I want to try open source solutions.
 * [powershell-pdftables-api](https://github.com/pdftables/powershell-pdftables-api )
 * [To-get-your-API-key-from-PDFTables](https://pdftables.com/pdf-to-excel-api)
+* [how-to-sign-external-scripts-to-be-able-to-run-on-your-system](https://devblogs.microsoft.com/scripting/hey-scripting-guy-how-can-i-sign-windows-powershell-scripts-with-an-enterprise-windows-pki-part-2-of-2/)
+
 
 
 
