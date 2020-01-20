@@ -38,20 +38,22 @@ However, I think once I am done with it, with minor modifications, you would be 
     * Input: A hastable collection array that can be converted to any format (as per the request of user)
     * Output: Based on the choice made by user in the main.ps1, it could be a JSON/CSV/Table output (All outputs or any combination, possible at any given time)
 
-# Execute 
-* To run this code, download the project and run main.ps1
+# Requirements
+* Windows OS with Powershell 5 or more installed on it.
+* Having lycamobile login credentials to be able to download pdf statements from their website.
+
+# Execute with Dummy data
+* To run this code with dummy data, download the project and run main.ps1
     * Dummy project will run with the data in the file @ TestData/OriginalPDF2CSVConvertedFile.csv
 
-# Manual Steps
-- [] To define yet 
+# To Execute with Real data (Your lycamobile statement)
 If you want to run with your real life data, 
-1. Go to lycamobile.nl. Download your calls logs pdf. 
-2. Run this code to convert pdf to csv (details to be added)
-3. Trim unneccessary information (details to be added)
-4. Once you have a proper csv file, copy and put it in the TestData folder say as TestData/myCallLogs.csv
-5. you can run the main.ps1 file now by giving this file name in the function mentioned in main.
-    * Get-Circle -PathOfCSV "$currentDir\TestData\myCallLogs.csv"
-6. You should now see results in powershell window (and I will add the summary to a out file in TestResults folder in due time)
+1. Go to lycamobile.nl. Login with your credentials and download your calls logs pdf. 
+2. You can convert the pdf to a csv file using this website: https://pdftables.com/
+3. Download or clone this repository in one of your drives.
+4. Copy the csv file created in step 2 to TestData directory with name 'OriginalPDF2CSVConvertedFile.csv'
+5. Run the main.ps1 script in the root folder of this project.
+6. You should see the results in directory './TestResults/*'
 
 # Reference
 * [Readme markdown-cheatsheet](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md "Readme markdown-cheatsheet")
