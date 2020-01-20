@@ -17,9 +17,9 @@ However, I think once I am done with it, with minor modifications, you would be 
     * Output: PDF call logs file.
 2. - [ ] Convert pdf to txt document.
     * Input: PDF call logs file
-    * Output: CSV file with calls logs and some garbage information.
+    * Output: CSV file with calls logs and some irrelevant information.
 3. - [x] Filter out the column header record and data records 
-    * Input: CSV file with calls logs and some garbage information.
+    * Input: CSV file with calls logs and some irrelevant information.
     * Output: A proper CSV file with all call logs (Data/Voice) information.
 4. - [x] Convert this filtered information into a csv file that we can now work with.
     * Input: A proper CSV file with all call logs (Data/Voice) information.
