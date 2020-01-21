@@ -7,11 +7,11 @@ Function Get-CallLogsDataAsCSV{
         [Parameter(Mandatory=$True, HelpMessage="Path of CSV file that contains call logs")]
         [String] $PathOfOutputCSVFile,
 
-        [Parameter(Mandatory=$false, HelpMessage="The column name based on which you want to fetch unique values")]
+        [Parameter(Mandatory=$True, HelpMessage="The column name based on which you want to fetch unique values")]
         [String] $Header,
 
-        [Parameter(Mandatory=$false, HelpMessage="The column name based on which you want to fetch unique values")]
-        [String[]] $RecordsRegEx = @("(DATA|VOICE),.*") # Default Regex to filter lycamobile records
+        [Parameter(Mandatory=$True, HelpMessage="The column values based on which you want to fetch unique records")]
+        [String] $RecordsRegEx 
     )
     Begin{}
     Process{
