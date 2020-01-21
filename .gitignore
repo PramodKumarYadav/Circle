@@ -38,7 +38,6 @@ dotnet-uninstall-debian-packages.sh
 
 # Ignore binaries and symbols
 *.pdb
-*.dll
 *.wixpdb
 
 # Ignore packages
