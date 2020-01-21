@@ -60,13 +60,13 @@ If you want to run the main script with your lycamobile account statement,
 * [Use of $PSScriptRoot  to get script location](https://thinkpowershell.com/add-script-flexibility-relative-file-paths/)
 
 # Approaches to parse PDF
-1. First approach was to try and convert pdf to csv. I first tried an API option option (as below). Worked Okay but due to limited option to use this free only for first 50 pages, I couldnt use this anymore. Discarded due to the fact that I want to try open source solutions. Keeping here for reference, in case if a project pays to use this for a use case of pdf2csv conversion. 
+1. First approach was to try and convert pdf to csv. I first tried an API option (as below). Worked Okay but due to limited option to use this free only for first 50 pages, I couldnt use this anymore as a long term solution. Thus rejected. Keeping here for reference, in case if a project pays to use this for a use case of pdf2csv conversion. 
 * [powershell-pdftables-api](https://github.com/pdftables/powershell-pdftables-api )
 * [To-get-your-API-key-from-PDFTables](https://pdftables.com/pdf-to-excel-api)
-* [how-to-sign-external-scripts-to-be-able-to-run-on-your-system](https://devblogs.microsoft.com/scripting/hey-scripting-guy-how-can-i-sign-windows-powershell-scripts-with-an-enterprise-windows-pki-part-2-of-2/)
+* [How-to-sign-external-scripts-to-be-able-to-run-on-your-system](https://devblogs.microsoft.com/scripting/hey-scripting-guy-how-can-i-sign-windows-powershell-scripts-with-an-enterprise-windows-pki-part-2-of-2/)
 2. Finally found a stand alone solution to use itextsharp.dll. Using this we can do pdf to txt conversion. So I needed another step to do a txt to csv conversion. Worked okay with some tweaks.
 * [Convert-PDF powershell module that uses itextsharp.dll](https://www.powershellgallery.com/packages/Convert-PDF/1.1 )
-* [reference on itextsharp](https://github.com/itext/itextsharp )
+* [Reference on itextsharp](https://github.com/itext/itextsharp )
 3. Tool used by lycamobile to create there pdfs.
 * [Tool-used-by-lycamobile-to-pdf-convert-their-documents](https://tcpdf.org/) 
 
