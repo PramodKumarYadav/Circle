@@ -155,3 +155,26 @@ function Save-ResultInExpectedFormat{
     }
     End{}
 }
+
+Function Install-ModuleIfNotInstalledAlready{
+    [CmdletBinding()]
+    Param(
+        [parameter(Mandatory,ValueFromPipeline)]
+        [string[]]$ModuleName
+    )
+    Begin{}
+    Process{      
+        foreach($module in $ModuleName){
+            # Install module if not installed already
+            if (Get-Module -ListAvailable -Name "$module") {
+                Write-Host "$module module exists"
+            }
+            else {
+                Write-Host "$module module does not exist. Installing now..."
+                Install-Module -Name "$module"
+            }
+        }
+    }
+    End{}
+}
+
