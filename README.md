@@ -50,6 +50,12 @@ If you want to run the main script with your lycamobile account statement,
 4. Run the main.ps1 script in the root folder of this project.
 5. You should see the results in directory './TestResults/*'
 
+# Feature List (to add in future)
+* Option to filter on dates
+* Option to show names in final output (by user providing say a download of name-number document from his phone to say test-data directory)
+* Option to download data from lycamobile via script.
+* Option to parse more than one pdf documents at a time.
+
 # Reference
 * [Readme markdown-cheatsheet](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md "Readme markdown-cheatsheet")
 * [emoji-cheat-sheet](https://www.webfx.com/tools/emoji-cheat-sheet/ "emoji-cheat-sheet")
@@ -66,11 +72,3 @@ If you want to run the main script with your lycamobile account statement,
 * [Reference on itextsharp](https://github.com/itext/itextsharp )
 3. Tool used by lycamobile to create there pdfs.
 * [Tool-used-by-lycamobile-to-pdf-convert-their-documents](https://tcpdf.org/) 
-
-# Feature List (to add in future)
-* Option to filter on dates
-* Option to show names in final output (by user providing say a download of name-number document from his phone to say test-data directory)
-* Option to download data from lycamobile via script.
-* Option to parse more than one pdf documents at a time.
-
-
