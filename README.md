@@ -15,29 +15,26 @@ However, I think once I am done with it, with minor modifications, you would be 
     * Note: The only option is to get a PDF download.
     * Input: Lycamobile login details of user.
     * Output: PDF call logs file.
-2. - [x] Convert pdf to txt document.
+2. - [x] Convert PDF to TXT document.
     * Input: PDF call logs file
-    * Output: txt file with calls logs and some irrelevant information.
-3. - [x] Convert txt to csv document.
-    * Input: txt file with calls logs and some irrelevant information.
-    * Output: CSV file with calls logs and some irrelevant information.
-4. - [x] Filter out the column header record and data records 
-    * Input: CSV file with calls logs and some irrelevant information.
-    * Output: A proper CSV file with all call logs (Data/Voice) information.
-5. - [x] Convert this filtered information into a csv file that we can now work with.
-    * Input: A proper CSV file with all call logs (Data/Voice) information.
-    * Output: A proper CSV file with only relevant information for call analysis i.e. (Voice) records.
-6. - [x] Get the unique called phone numbers from this csv file.
-    * Input: A proper CSV file with only relevant information for call analysis i.e. (Voice) records.
+    * Output: Raw TXT file with calls logs and other irrelevant information.
+3. - [x] Filter out the column header record and data records 
+    * Input: Raw TXT file with calls logs and other irrelevant information.
+    * Output: A filtered TXT file with only (Voice) call logs.
+4. - [x] Convert TXT to CSV document.
+    * Input: A filtered TXT file with only (Voice) call logs.
+    * Output: A filtered CSV file with only (Voice) call logs.
+5. - [x] Get the unique called phone numbers from this csv file.
+    * Input: A filtered CSV file with only (Voice) call logs.
     * Output: An array of Unique phone numbers called by the user.
-7. - [x] Get the frequency (count of calls per phone number) from this csv file.
-    * Input: A proper CSV file with only relevant information for call analysis i.e. (Voice) records.
+6. - [x] Get the frequency (count of calls per phone number) from this csv file.
+    * Input: A filtered CSV file with only (Voice) call logs.
     * Output: An array of frequency (count of calls/per phone number).
-8. - [x] Make a matrix with these two parameters 
+7. - [x] Make a matrix with these two parameters 
     * Note: Goal is to create this matrix is such a way, that it can be used to create any output format as desired
     * Input: An array of Unique phone numbers and their corresponding frequency array
     * Output: A hastable collection array that can be converted to any format (as per the request of user)
-9. - [x] Display the result as json/csv/table (what you like)
+8. - [x] Display the result as json/csv/table (what you like)
     * Input: A hastable collection array that can be converted to any format (as per the request of user)
     * Output: Based on the choice made by user in the main.ps1, it could be a JSON/CSV/Table output (All outputs or any combination, possible at any given time)
 
@@ -70,6 +67,10 @@ If you want to run the main script with your lycamobile account statement,
 3. Tool used by lycamobile to create there pdfs.
 * [Tool-used-by-lycamobile-to-pdf-convert-their-documents](https://tcpdf.org/) 
 
-
+# Feature List (to add in future)
+* Option to filter on dates
+* Option to show names in final output (by user providing say a download of name-number document from his phone to say test-data directory)
+* Option to download data from lycamobile via script.
+* Option to parse more than one pdf documents at a time.
 
 
