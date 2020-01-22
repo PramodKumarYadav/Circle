@@ -1,4 +1,33 @@
 # Tested OKay
+Function Select-DataRecords{
+    [CmdletBinding()]
+    Param(
+        [Parameter(Mandatory=$True, HelpMessage="Path of Input file that needs to be filtered")]
+        [String] $InputFile,
+
+        [Parameter(Mandatory=$True, HelpMessage="Path of filtered Output file")]
+        [String] $OutputFile,
+
+        [Parameter(Mandatory=$True, HelpMessage="The regex based on which you want to filter out mathching records")]
+        [String] $RegEx
+    )
+    Begin{}
+    Process{
+        # Create a new outputfile to store the filtered information
+        New-Item -Path "$OutputFile" -ItemType "file" -Force > $null # To get silent output.
+
+        # Get matching data records and add to the output file
+        foreach($line in Get-Content $InputFile) {
+            if($line -match $RegEx){
+                Add-Content -Path "$OutputFile" -Value "$line" 
+            }
+        }
+    }
+    End{}
+}
+
+# Tested OKay
+
 Function Get-GroupValuesForACSVColumn{
     [CmdletBinding()]
     Param(
