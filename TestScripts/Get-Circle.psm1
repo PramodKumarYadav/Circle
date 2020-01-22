@@ -12,10 +12,6 @@ function Get-Circle{
         [switch]$SaveAsTable
     )
     Begin{
-
-        # Intialize TestResults directory for this Run (except readme file)
-        Clear-Directory -Path "$RootDir\TestResults" -Exclude "Readme.md"
-
         # Check if there is/are input pdf file(s) to analyse. If not, exit program. 
         $PDFFiles = Get-ChildItem "$RootDir\TestData\*.pdf" 
         if ($PDFFiles){
@@ -26,6 +22,9 @@ function Get-Circle{
             Write-Host "Exiting program!"
             break;
         }
+
+        # Intialize TestResults directory for this Run (except readme file)
+        Clear-Directory -Path "$RootDir\TestResults" -Exclude "Readme.md"
     }
     Process{
         # Create CallStatistics for each of these PDF files 
