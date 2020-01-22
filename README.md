@@ -54,7 +54,7 @@ If you want to run the main script with your lycamobile account statement,
 * Option to filter on dates
 * Option to show names in final output (by user providing say a download of name-number document from his phone to say test-data directory)
 * Option to download data from lycamobile via script.
-* Option to parse more than one pdf documents at a time.
+* Option to report on more than one pdf documents at a time.
 
 # Reference
 * [Readme markdown-cheatsheet](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md "Readme markdown-cheatsheet")
