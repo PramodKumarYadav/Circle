@@ -12,11 +12,15 @@ function Get-Circle{
         [switch]$SaveAsTable
     )
     Begin{
-        # Check if there is a input pdf file to analyse. If not, exit program. 
-        $PDFFile = Get-ChildItem "$RootDir\TestData\*.pdf" 
-        if (Test-Path -Path $PDFFile){
-            $pdfName = Split-Path -Path "$PDFFile" -Leaf -Resolve
-            Write-Host "Creating call log analysis for ... $pdfName"
+
+        # Intialize TestResults directory for this Run (except readme file)
+        Clear-Directory -Path "$RootDir\TestResults" -Exclude "Readme.md"
+
+        # Check if there is/are input pdf file(s) to analyse. If not, exit program. 
+        $PDFFiles = Get-ChildItem "$RootDir\TestData\*.pdf" 
+        if ($PDFFiles){
+            Write-Host "PDF files exist in TestData directory."
+            Write-Host "Creating CallStatistics for each of them now..."
         }else{
             Write-Host "No input file to analyse. Provide a pdf call log at location: $RootDir\TestData\*.pdf"
             Write-Host "Exiting program!"
@@ -24,38 +28,47 @@ function Get-Circle{
         }
     }
     Process{
-        # Define variable to store all TestResults
-        $TestResultsDir = "$RootDir\TestResults"
+        # Create CallStatistics for each of these PDF files 
+        foreach($PDFFile in $PDFFiles){
+            #Get pdfFile name and create a name without spaces
+            $PDFName = Split-Path -Path "$PDFFile" -LeafBase -Resolve
+            $PDFName = $PDFName -replace '\s', '_'
+            Write-Host "Creating call log analysis for ... $PDFName"
 
-        # Convert the PDF input file to a TXT file
-        $RawTXTFile = "$TestResultsDir\RawTXTFile.txt"
-        Convert-PDF2TXT -file "$PDFFile" > "$RawTXTFile"
+            # Define variable to store all TestResults
+            $TestResultsDir = "$RootDir\TestResults\$PDFName"
+            Initialize-Directory -Path $TestResultsDir
 
-        # Filter out the relevant records from this RawFile
-        $FilteredTXTFile = "$TestResultsDir\FilteredTXTFile.txt"
-        $RegExDataToFilter = '(VOICE).*'
-        Select-DataRecords -InputFile "$RawTXTFile" -OutputFile "$FilteredTXTFile" -RegEx "$RegExDataToFilter"
+            # Convert the PDF input file to a TXT file
+            $RawTXTFile = "$TestResultsDir\RawTXTFile.txt"
+            Convert-PDF2TXT -file "$PDFFile" > "$RawTXTFile"
 
-        # Convert this TXT file to a proper CSV file
-        $FilteredCSVFile = "$TestResultsDir\FilteredCSVFile.csv"
-        $Header = 'Call Type','Customer number','Dialled number','Date','Time','CallDuration','Cost'
-        Import-Csv "$FilteredTXTFile" -delimiter " " -Header $Header | Export-Csv "$FilteredCSVFile"
+            # Filter out the relevant records from this RawFile
+            $FilteredTXTFile = "$TestResultsDir\FilteredTXTFile.txt"
+            $RegExDataToFilter = '(VOICE).*'
+            Select-DataRecords -InputFile "$RawTXTFile" -OutputFile "$FilteredTXTFile" -RegEx "$RegExDataToFilter"
 
-        # Get all Called phone numbers from the csv
-        $PhoneColumnName = 'Dialled number' 
-        $PhoneNumbers = Get-UniquePhoneNumbers -PathOfCSV "$FilteredCSVFile " -ColumnName "$PhoneColumnName"
+            # Convert this TXT file to a proper CSV file
+            $FilteredCSVFile = "$TestResultsDir\FilteredCSVFile.csv"
+            $Header = 'Call Type','Customer number','Dialled number','Date','Time','CallDuration','Cost'
+            Import-Csv "$FilteredTXTFile" -delimiter " " -Header $Header | Export-Csv "$FilteredCSVFile"
 
-        # Get the frequency of calls
-        $CallFrequency = Get-CallFrequency -PathOfCSV "$FilteredCSVFile " -ColumnName "$PhoneColumnName"
+            # Get all Called phone numbers from the csv
+            $PhoneColumnName = 'Dialled number' 
+            $PhoneNumbers = Get-UniquePhoneNumbers -PathOfCSV "$FilteredCSVFile " -ColumnName "$PhoneColumnName"
 
-        # Get the call statistics matrix based on phone numbers and their frequency
-        $PSOrderedDictionaryArray  = Get-CallStatistics -PhoneNumbers $PhoneNumbers -CallFrequency $CallFrequency
+            # Get the frequency of calls
+            $CallFrequency = Get-CallFrequency -PathOfCSV "$FilteredCSVFile " -ColumnName "$PhoneColumnName"
 
-        # Create output in the requested format(s) by user
-        Save-ResultInExpectedFormat -PSOrderedDictionaryArray $PSOrderedDictionaryArray -SaveAsJSON:$SaveAsJSON -SaveAsCSV:$SaveAsCSV -SaveAsTable:$SaveAsTable -PathOfOutputDir $TestResultsDir
-        
-        # Also show the result as a table (for a quick look in powershell console)
-        $PSOrderedDictionaryArray | ForEach-Object {[PSCustomObject]$_} | Format-Table -AutoSize 
+            # Get the call statistics matrix based on phone numbers and their frequency
+            $PSOrderedDictionaryArray  = Get-CallStatistics -PhoneNumbers $PhoneNumbers -CallFrequency $CallFrequency
+
+            # Create output in the requested format(s) by user
+            Save-ResultInExpectedFormat -PSOrderedDictionaryArray $PSOrderedDictionaryArray -SaveAsJSON:$SaveAsJSON -SaveAsCSV:$SaveAsCSV -SaveAsTable:$SaveAsTable -PathOfOutputDir $TestResultsDir
+
+            # Also show the result as a table (for a quick look in powershell console)
+            $PSOrderedDictionaryArray | ForEach-Object {[PSCustomObject]$_} | Format-Table -AutoSize 
+        }
     }
     End{}
 }

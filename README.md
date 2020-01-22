@@ -11,10 +11,10 @@ Since I have a lycamobile connection, the scope of the project (atleast at this 
 However, I think once I am done with it, with minor modifications, you would be able to run it for your telephone statements as well with other service providers as well.
 
 # Design
-1. - [ ] Download account statement from Lycamobile 
+1. - [ ] Download account statement(s) from Lycamobile and copy them to TestData Directory (one or more allowed)
     * Note: The only option is to get a PDF download.
     * Input: Lycamobile login details of user.
-    * Output: PDF call logs file.
+    * Output: PDF call logs file(s).
 2. - [x] Convert PDF to TXT document.
     * Input: PDF call logs file
     * Output: Raw TXT file with calls logs and other irrelevant information.
@@ -51,10 +51,10 @@ If you want to run the main script with your lycamobile account statement,
 5. You should see the results in directory './TestResults/*'
 
 # Feature List (to add in future)
-* Option to filter on dates
-* Option to show names in final output (by user providing say a download of name-number document from his phone to say test-data directory)
-* Option to download data from lycamobile via script.
-* Option to report on more than one pdf documents at a time.
+* - [ ] Option to filter on dates
+* - [ ] Option to show names in final output (by user providing say a download of name-number document from his phone to say test-data directory)
+* - [ ] Option to download data from lycamobile via script.
+* - [x] Option to report on more than one pdf statements at the same time.
 
 # Reference
 * [Readme markdown-cheatsheet](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md "Readme markdown-cheatsheet")

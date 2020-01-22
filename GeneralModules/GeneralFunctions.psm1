@@ -207,3 +207,36 @@ Function Install-ModuleIfNotInstalledAlready{
     End{}
 }
 
+function Initialize-Directory {
+	param(
+            [String]$Path
+        )
+    
+	if (Test-Path $Path){
+        Write-Information "$Path Exist. Deleting directory now!"
+        # Due to a known bug in remove-item, we have to do it this way.
+        Get-ChildItem -LiteralPath $Path -recurse | Remove-Item -Recurse -Force
+        New-Item -Path $Path -ItemType "directory" -Force > $null # To get silent output.
+
+	}else {
+		Write-Information "$Path doesn't exist. Creating directory now!"
+		New-Item -Path $Path -ItemType "directory" -Force > $null # To get silent output.
+	}
+}
+
+function Clear-Directory {
+	param(
+            [String]$Path,
+            [String]$Exclude
+        )
+    
+	if (Test-Path $Path){
+        Write-Information "$Path Exist. Deleting directory now!"
+        # Due to a known bug in remove-item, we have to do it this way.
+        Get-ChildItem -LiteralPath $Path -recurse -Exclude "$Exclude"| Remove-Item -Recurse -Force
+
+	}else {
+		Write-Information "$Path doesn't exist!"
+	}
+}
+
