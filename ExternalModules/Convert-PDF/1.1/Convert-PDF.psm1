@@ -23,7 +23,6 @@ function Convert-PDF2TXT {
 		[Parameter(Mandatory=$true)]
 		[string]$file
 	)	
-	Write-Host "Script directory: $PSScriptRoot"
 	Add-Type -Path "$PSScriptRoot\itextsharp.dll"
 	$pdf = New-Object iTextSharp.text.pdf.pdfreader -ArgumentList $file
 	for ($page = 1; $page -le $pdf.NumberOfPages; $page++){
