@@ -1,10 +1,10 @@
 # Test the working of individual functions and overall scripts here
 
-# modules are scoped to the script, so we have to do this here. Cannot do it in say a function. 
-$thisDir = $PSScriptRoot  # This will always give you the directory of this script (root in this case)
-$rootDir = Split-Path -Path $thisDir
+# modules are scoped to the script, so we cannot refactor below importing module code to say a function. 
+$rootDir = Split-Path -Path $PSScriptRoot  # Parent of current directory
 $modules = Get-ChildItem -Path "$rootDir\*.psm1" -Recurse -Force
 foreach($module in $modules){
+    Write-Host "Importing module... $module"
     Import-Module $module -Force
 }
 
