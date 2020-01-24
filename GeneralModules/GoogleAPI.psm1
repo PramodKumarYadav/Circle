@@ -5,7 +5,9 @@ Function Select-DataRecords{
         [Parameter(Mandatory=$False, HelpMessage="Access token for google contacts API")]
         [String] $accessToken = 'ya29.Il-7B5msfsn1IYWY4qMxvk-AcPdP7X4ce9NM0H5zLzsHvcNCEkT0FDAlI1JkI5ktM93XRjbx0ej0r7R75xJwjbLK9ojfzus3K3DwS-XUe26SfLp0uwid8FHaeNwePEb_Xw'
     )
-    Begin{}
+    Begin{
+        # Credits To: https://www.reddit.com/r/PowerShell/comments/7ax36a/powershell_and_google_contacts_api/ 
+    }
     Process{
         # Define headers including access Token
         $headers = @{"Authorization" = "Bearer $accessToken"         
