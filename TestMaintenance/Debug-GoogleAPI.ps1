@@ -9,4 +9,4 @@ foreach($module in $modules){
 }
 
 # Give name of functions that you want to call here. example is given below.
-Select-DataRecords
+Get-NameAndNumberFromGoogleContacts
