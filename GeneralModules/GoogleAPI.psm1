@@ -1,9 +1,9 @@
 # Tested OKay
-Function Select-NameAndNumberFromGoogleContacts{
+Function Get-NameAndNumberFromGoogleContacts{
     [CmdletBinding()]
     Param(
         [Parameter(Mandatory=$False, HelpMessage="Access token for google contacts API")]
-        [String] $accessToken = 'ya29.Il-7B5msfsn1IYWY4qMxvk-AcPdP7X4ce9NM0H5zLzsHvcNCEkT0FDAlI1JkI5ktM93XRjbx0ej0r7R75xJwjbLK9ojfzus3K3DwS-XUe26SfLp0uwid8FHaeNwePEb_Xw'
+        [String] $accessToken = ''
     )
     Begin{
         # Credits To: https://www.reddit.com/r/PowerShell/comments/7ax36a/powershell_and_google_contacts_api/ 
@@ -32,3 +32,7 @@ Function Select-NameAndNumberFromGoogleContacts{
     }
     End{}
 }
+
+# Need a function to set - import contacts to keep data uptodate in cloud
+
+# Need a function to create authentication token on run time (since tokens expire)
