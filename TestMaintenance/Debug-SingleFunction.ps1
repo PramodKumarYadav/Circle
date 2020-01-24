@@ -9,4 +9,5 @@ foreach($module in $modules){
 }
 
 # Give name of functions that you want to call here. example is given below.
-Clear-Directory -Path "$rootDir\TestResults" -Exclude "Readme.md"
+# Clear-Directory -Path "$rootDir\TestResults" -Exclude "Readme.md"
+Get-ContactNameAndNumber
