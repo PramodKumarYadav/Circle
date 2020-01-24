@@ -1,5 +1,5 @@
 # Tested OKay
-Function Select-DataRecords{
+Function Select-NameAndNumberFromGoogleContacts{
     [CmdletBinding()]
     Param(
         [Parameter(Mandatory=$False, HelpMessage="Access token for google contacts API")]
