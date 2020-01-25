@@ -47,11 +47,12 @@ Function Get-NameAndNumberFromGoogleContacts{
         Foreach ($Record in $Response.feed.entry) {
             If ($Record.'gd$phoneNumber') {
                 Foreach ($Number in $Record.'gd$phoneNumber') {
-                    $item = [pscustomobject][Ordered]@{
-                                                Name = $Record.title.'$t'
-                                                Number = $Number.'$t'
-                                            }
-                    $Contacts += $item
+                    $PSitem = [psobject][ordered]@{
+                                'Name' = $Record.title.'$t'
+                                'Number' = $Number.'$t'
+                            }
+
+                    $Contacts += $PSitem
                 }
             }
         }
