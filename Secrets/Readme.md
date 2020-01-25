@@ -21,8 +21,10 @@
     <img src= "../Images/CreateProject.png">
     <img src= "../Images/ProjectName.png">
     <img src= "../Images/ProjectCreated.png >
+
 2. Go to Navigation Menu
-    <img src= "../Images/NavigationMenu.png">
+    <img src= "../Images/NavigationMenu.png" >
+    
 3. Enable API: Contacts 
     <img src= "../Images/APIsAndServices-Dashboard.png>
     <img src= "../Images/EnableAPIsAndServices.png>
