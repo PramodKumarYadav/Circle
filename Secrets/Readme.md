@@ -24,8 +24,8 @@
 
 2. Go to Navigation Menu
     <img src= "../Images/NavigationMenu.png" >
-    
-3. Enable API: Contacts 
+
+3. Enable Contacts API  
     <img src= "../Images/APIsAndServices-Dashboard.png>
     <img src= "../Images/EnableAPIsAndServices.png>
     <img src= "../Images/ContactsAPI.png>
