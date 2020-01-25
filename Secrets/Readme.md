@@ -20,15 +20,15 @@
 
     <img src= "../Images/CreateProject.png">
     <img src= "../Images/ProjectName.png">
-    <img src= "../Images/ProjectCreated.png >
-    
-2. [Go to Navigation Menu]()
+    <img src= "../Images/ProjectCreated.png" >
+
+2. Go to Navigation Menu
     <img src= "../Images/NavigationMenu.png" >
 
 3. Enable Contacts API  
-    <img src= "../Images/APIsAndServices-Dashboard.png>
-    <img src= "../Images/EnableAPIsAndServices.png>
-    <img src= "../Images/ContactsAPI.png>
+    <img src= "../Images/APIsAndServices-Dashboard.png">
+    <img src= "../Images/EnableAPIsAndServices.png">
+    <img src= "../Images/ContactsAPI.png">
 
 3. [Create oAuth keys:  Client ID and Client Secret keys](https://developers.google.com/identity/protocols/OpenIDConnect#getcredentials)
 
