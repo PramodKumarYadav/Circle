@@ -21,7 +21,7 @@
     <img src= "../Images/CreateProject.png">
     <img src= "../Images/ProjectName.png">
     <img src= "../Images/ProjectCreated.png >
-
+    
 2. [Go to Navigation Menu]()
     <img src= "../Images/NavigationMenu.png" >
 
