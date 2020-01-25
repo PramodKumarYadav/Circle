@@ -15,3 +15,6 @@
 # Reference
 * [Solution to get Names-Numbers](https://www.reddit.com/r/PowerShell/comments/7ax36a/powershell_and_google_contacts_api/)
 
+# Steps to create a Google project and ClientID and ClientSecret
+1. [Create a google project](https://console.cloud.google.com/cloud-resource-manager)
+    <img src= "../Images/CreateProject.png">
