@@ -17,4 +17,9 @@
 
 # Steps to create a Google project and ClientID and ClientSecret
 1. [Create a google project](https://console.cloud.google.com/cloud-resource-manager)
-    <img src= "../Images/CreateProject.png">
+    <img src= "../Images/CreateProject.png" width="100">
+    <img src= "../Images/ProjectName.png" width="100">
+2. 
+
+# Reference
+* [How to insert images in github readme.md files](https://youtu.be/hHbWF1Bvgf4)
