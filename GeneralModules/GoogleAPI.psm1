@@ -1,24 +1,20 @@
-# WIP: Yet to be Tested
+# Tested Okay with valid parameters
 Function Get-GAuthToken{
     [CmdletBinding()]
     Param(
-        [Parameter(Mandatory=$True, HelpMessage="As received when creating your google project")]
+        [Parameter(Mandatory=$True, HelpMessage="Taken manually by giving valid client Id and ClientSecret in: https://developers.google.com/oauthplayground/")]
         [String] $RefreshToken,
 
-        [Parameter(Mandatory=$True, HelpMessage="Client ID")]
+        [Parameter(Mandatory=$True, HelpMessage="Client ID received by manually creating OAuth 2.0 Client IDs")]
         [String] $ClientID,
 
-        [Parameter(Mandatory=$True, HelpMessage="CLIENT_SECRET")]
+        [Parameter(Mandatory=$True, HelpMessage="Client secret received by manually creating OAuth 2.0 Client IDs")]
         [String] $ClientSecret
     )
     Begin{
         # Credits To: https://www.reddit.com/r/PowerShell/comments/7ax36a/powershell_and_google_contacts_api/ 
     }
     Process{
-        # $RefreshToken = "$REFRESH_TOKEN"
-        # $ClientID = "$CLIENT_ID"
-        # $ClientSecret = "$CLIENT_SECRET"
-
         $grantType = "refresh_token"
         $requestUri = "https://accounts.google.com/o/oauth2/token" 
         $GAuthBody = "refresh_token=$RefreshToken&client_id=$ClientID&client_secret=$ClientSecret&grant_type=$grantType"
@@ -32,8 +28,8 @@ Function Get-GAuthToken{
 Function Get-NameAndNumberFromGoogleContacts{
     [CmdletBinding()]
     Param(
-        [Parameter(Mandatory=$False, HelpMessage="Access token for google contacts API")]
-        [String] $accessToken = 'ya29.Il-7B7nPUWYf3XEO8dMN3Wp4s_rolbwlcZJyh19W6AJ1ekwxsLKJOsRepf7nOWkdBs2EexOSJKCbnNbUVx1m3foxHPAGNL2HlSVjCDivHUgZzCzTaT0R_JAYJaWw_ITwow'
+        [Parameter(Mandatory=$True, HelpMessage="Access token for google contacts API")]
+        [String] $accessToken
     )
     Begin{
         # Credits To: https://www.reddit.com/r/PowerShell/comments/7ax36a/powershell_and_google_contacts_api/ 
