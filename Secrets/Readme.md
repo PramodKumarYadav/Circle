@@ -17,8 +17,8 @@
 
 # Steps to create a Google project and ClientID and ClientSecret
 1. [Create a google project](https://console.cloud.google.com/cloud-resource-manager)
-    <img src= "../Images/CreateProject.png" width="100">
-    <img src= "../Images/ProjectName.png" width="100">
+    <img src= "../Images/CreateProject.png" >
+    <img src= "../Images/ProjectName.png" >
 2. 
 
 # Reference
