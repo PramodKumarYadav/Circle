@@ -17,6 +17,7 @@
 
 # Steps to create a Google project and ClientID and ClientSecret
 1. [Create a google project](https://console.cloud.google.com/cloud-resource-manager)
+
     <img src= "../Images/CreateProject.png">
     <img src= "../Images/ProjectName.png">
     <img src= "../Images/ProjectCreated.png" >
@@ -26,7 +27,14 @@
     <img src= "../Images/APIsAndServices-Dashboard.png">
     <img src= "../Images/EnableAPIsAndServices.png">
     <img src= "../Images/ContactsAPI.png">
-
+    <img src= "../Images/EnableContactsAPI.png">
+4. Create Credentials (oAuth keys:  Client ID and Client Secret keys)
+    * Either from the ContactsAPI page as shown below.
+    <img src= "../Images/CreateCredentials.png">
+    <img src= "../Images/Credentials-oAuthClientID.png">
+    <img src= "../Images/SetProductNameOnConsentScreen.png">
+    <img src= "../Images/oAuthConsentScreen.png">
+    * Or from the 
 3. [Create oAuth keys:  Client ID and Client Secret keys](https://developers.google.com/identity/protocols/OpenIDConnect#getcredentials)
 
     
