@@ -34,6 +34,17 @@
     <img src= "../Images/Credentials-oAuthClientID.png">
     <img src= "../Images/SetProductNameOnConsentScreen.png">
     <img src= "../Images/oAuthConsentScreen.png">
+    <img src= "../Images/GiveApplicationName.png">
+    <img src= "../Images/GoBackToCredentials.png">
+    <img src= "../Images/TryCreateCredentialsAgain.png">
+    <img src= "../Images/oAuthClientID.png">
+    <img src= "../Images/CreateoAuthClientID.png">
+    <img src= "../Images/ClientIDAndClientSecretCreated.png">
+    * You can also view this anytime from the credentials page (or even set up from there as shown below)
+    <img src= "../Images/CredentialsMenu.png">
+    <img src= "../Images/ViewCredentials.png">
+    <img src= "../Images/ViewClientIDAndClientSecret.png">
+
     * Or from the 
 3. [Create oAuth keys:  Client ID and Client Secret keys](https://developers.google.com/identity/protocols/OpenIDConnect#getcredentials)
 
