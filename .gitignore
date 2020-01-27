@@ -95,3 +95,7 @@ TestData/*
 # Ignore all files in TestResults to avoid publishing sensitive personal data in output. (except a readme file to show dir) 
 TestResults/*
 !TestResults/*.md
+
+# Ignore all files in Secrets to avoid publishing sensitive personal data in output. (except a readme file to show dir) 
+Secrets/*
+!Secrets/*.md
