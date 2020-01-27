@@ -29,13 +29,15 @@
 # Detailed: 
 ## Step by step instructions.
 1. [Create a google project](https://console.cloud.google.com/cloud-resource-manager)
---------
+
     <img src= "../Images/CreateProject.png">
     <img src= "../Images/ProjectName.png">
     <img src= "../Images/ProjectCreated.png" >
-2. Go to Navigation Menu
 --------
+2. Go to Navigation Menu
+
     <img src= "../Images/NavigationMenu.png" >
+--------
 ### 3. Enable Contacts API  
     <img src= "../Images/APIsAndServices-Dashboard.png">
     <img src= "../Images/EnableAPIsAndServices.png">
