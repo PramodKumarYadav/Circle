@@ -28,7 +28,8 @@
 
 # Detailed: 
 ## Step by step instructions.
-1. [Create a google project](https://console.cloud.google.com/cloud-resource-manager)
+### 1. [Create a google project](https://console.cloud.google.com/cloud-resource-manager)
+
 
     <img src= "../Images/CreateProject.png">
     <img src= "../Images/ProjectName.png">
