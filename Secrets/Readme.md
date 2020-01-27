@@ -38,14 +38,14 @@
 
     <img src= "../Images/NavigationMenu.png" >
 --------
-3. ___Enable Contacts API  
+3. ___Enable Contacts API___ 
     <img src= "../Images/APIsAndServices-Dashboard.png">
     <img src= "../Images/EnableAPIsAndServices.png">
     <img src= "../Images/ContactsAPI.png">
     <img src= "../Images/EnableContactsAPI.png">
 --------
-4. ___Create Credentials (oAuth keys:  Client ID and Client Secret keys)
-    __Either from the ContactsAPI page as shown below.
+4. ___Create Credentials (oAuth keys:  Client ID and Client Secret keys)___
+    __Either from the ContactsAPI page as shown below.___
     <img src= "../Images/CreateCredentials.png">
     <img src= "../Images/Credentials-oAuthClientID.png">
     <img src= "../Images/SetProductNameOnConsentScreen.png">
@@ -57,12 +57,12 @@
     <img src= "../Images/CreateoAuthClientID.png">
     <img src= "../Images/ClientIDAndClientSecretCreated.png">
     
-    __You can also view this anytime from the credentials page (or even set up from there as shown below)
+    __You can also view this anytime from the credentials page (or even set up from there as shown below)___
     <img src= "../Images/CredentialsMenu.png">
     <img src= "../Images/ViewCredentials.png">
     <img src= "../Images/ViewClientIDAndClientSecret.png">
 --------
-5. ___Save the keys as a JSON file in your Secrets directory (this folder).
+5. ___Save the keys as a JSON file in your Secrets directory (this folder).___
 
     <img src= "../Images/DownloadJSON.png">
     <img src= "../Images/DownloadedFile.png">
