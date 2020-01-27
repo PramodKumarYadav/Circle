@@ -28,19 +28,19 @@
 
 # Detailed: 
 ## Step by step instructions.
-1. [Create a google project](https://console.cloud.google.com/cloud-resource-manager)
+### 1. [Create a google project](https://console.cloud.google.com/cloud-resource-manager)
 
     <img src= "../Images/CreateProject.png">
     <img src= "../Images/ProjectName.png">
     <img src= "../Images/ProjectCreated.png" >
-2. Go to Navigation Menu
+### 2. Go to Navigation Menu
     <img src= "../Images/NavigationMenu.png" >
-3. Enable Contacts API  
+### 3. Enable Contacts API  
     <img src= "../Images/APIsAndServices-Dashboard.png">
     <img src= "../Images/EnableAPIsAndServices.png">
     <img src= "../Images/ContactsAPI.png">
     <img src= "../Images/EnableContactsAPI.png">
-4. Create Credentials (oAuth keys:  Client ID and Client Secret keys)
+### 4. Create Credentials (oAuth keys:  Client ID and Client Secret keys)
     * Either from the ContactsAPI page as shown below.
     <img src= "../Images/CreateCredentials.png">
     <img src= "../Images/Credentials-oAuthClientID.png">
@@ -53,18 +53,18 @@
     <img src= "../Images/CreateoAuthClientID.png">
     <img src= "../Images/ClientIDAndClientSecretCreated.png">
     
-    * You can also view this anytime from the credentials page (or even set up from there as shown below)
+    #### You can also view this anytime from the credentials page (or even set up from there as shown below)
     <img src= "../Images/CredentialsMenu.png">
     <img src= "../Images/ViewCredentials.png">
     <img src= "../Images/ViewClientIDAndClientSecret.png">
-5. Save the keys as a JSON file in your Secrets directory (this folder).
+### 5. Save the keys as a JSON file in your Secrets directory (this folder).
 
     <img src= "../Images/DownloadJSON.png">
     <img src= "../Images/DownloadedFile.png">
     <img src= "../Images/CopyFileFromDownloads.png">
     <img src= "../Images/MoveFileToSecrets.png">
 
-    * Or from the 
+    #### Or from the 
 3. [Create oAuth keys:  Client ID and Client Secret keys](https://developers.google.com/identity/protocols/OpenIDConnect#getcredentials)
 
     
