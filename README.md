@@ -52,9 +52,12 @@ If you want to run the main script with your lycamobile account statement,
 
 # Feature List (to add in future)
 * - [ ] Option to filter on dates
-* - [ ] Option to show names in final output (by user providing say a download of name-number document from his phone to say test-data directory)
+* - [x] Option to show names in final output 
+    - (If user chooses to sync his contacts to google contacts from his smart phone and provide a secrets json file in Secrets directory. Steps shared here.)
+    - [ ] Full Instructions on how to do this.
 * - [ ] Option to download data from lycamobile via script.
 * - [x] Option to report on more than one pdf statements at the same time.
+* - [x] Sort final stats as per CallFrequency (This will show who you call the most on top).
 
 # Reference
 * [Readme markdown-cheatsheet](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md "Readme markdown-cheatsheet")
