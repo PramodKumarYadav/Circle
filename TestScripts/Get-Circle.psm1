@@ -53,20 +53,27 @@ function Get-Circle{
             Import-Csv "$FilteredTXTFile" -delimiter " " -Header $Header | Export-Csv "$FilteredCSVFile"
 
             # Get all Called phone numbers from the csv
-            $PhoneColumnName = 'Dialled number' 
-            $PhoneNumbers = Get-UniquePhoneNumbers -PathOfCSV "$FilteredCSVFile " -ColumnName "$PhoneColumnName"
+            $NumberColumnName = 'Dialled number' 
+            $PhoneNumbers = Get-UniquePhoneNumbers -PathOfCSV "$FilteredCSVFile " -ColumnName "$NumberColumnName"
 
             # Get the frequency of calls
-            $CallFrequency = Get-CallFrequency -PathOfCSV "$FilteredCSVFile " -ColumnName "$PhoneColumnName"
+            $CallFrequency = Get-CallFrequency -PathOfCSV "$FilteredCSVFile " -ColumnName "$NumberColumnName"
+
+            # Get the names of people called (If user has set up this option to provide a Secrets json with Client ID and Client Secret)
+            $Names = @() # Initialize this array so that if user has not chosen for this option, the Get-CallStatistics function can still handle it with this empty declaration
+            $Names = Get-ContactNames -PhoneNumbers $PhoneNumbers
 
             # Get the call statistics matrix based on phone numbers and their frequency
-            $PSOrderedDictionaryArray  = Get-CallStatistics -PhoneNumbers $PhoneNumbers -CallFrequency $CallFrequency
+            $PSOrderedDictionaryArray  = Get-CallStatistics -PhoneNumbers $PhoneNumbers -CallFrequency $CallFrequency -Names  $Names
+
+            # Sort this dictionary in descending order of call Frequency (Since there is value in knowing who you call the most)
+            $SortedDictionary = $PSOrderedDictionaryArray.GetEnumerator() | Sort-Object -Property @{Expression={[int]$_.CallFrequency}; Descending=$true}
 
             # Create output in the requested format(s) by user
-            Save-ResultInExpectedFormat -PSOrderedDictionaryArray $PSOrderedDictionaryArray -SaveAsJSON:$SaveAsJSON -SaveAsCSV:$SaveAsCSV -SaveAsTable:$SaveAsTable -PathOfOutputDir $TestResultsDir
+            Save-ResultInExpectedFormat -PSOrderedDictionaryArray $SortedDictionary -SaveAsJSON:$SaveAsJSON -SaveAsCSV:$SaveAsCSV -SaveAsTable:$SaveAsTable -PathOfOutputDir $TestResultsDir
 
             # Also show the result as a table (for a quick look in powershell console)
-            $PSOrderedDictionaryArray | ForEach-Object {[PSCustomObject]$_} | Format-Table -AutoSize 
+            $SortedDictionary | ForEach-Object {[PSCustomObject]$_} | Format-Table -AutoSize 
         }
     }
     End{}
