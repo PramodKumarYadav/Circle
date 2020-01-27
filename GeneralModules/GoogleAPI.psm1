@@ -5,10 +5,10 @@ Function Get-GAuthToken{
         [Parameter(Mandatory=$True, HelpMessage="Taken manually by giving valid client Id and ClientSecret in: https://developers.google.com/oauthplayground/")]
         [String] $RefreshToken,
 
-        [Parameter(Mandatory=$True, HelpMessage="Client ID received by manually creating OAuth 2.0 Client IDs")]
+        [Parameter(Mandatory=$True, HelpMessage="Client ID received from Google by manually creating OAuth credentials")]
         [String] $ClientID,
 
-        [Parameter(Mandatory=$True, HelpMessage="Client secret received by manually creating OAuth 2.0 Client IDs")]
+        [Parameter(Mandatory=$True, HelpMessage="Client secret received from Google by manually creating OAuth 2.0 credentials")]
         [String] $ClientSecret
     )
     Begin{
@@ -39,7 +39,6 @@ Function Get-NameAndNumberFromGoogleContacts{
         $headers = @{"Authorization" = "Bearer $accessToken"         
                     "Content-type" = "application/json"}
 
-        
         # Manually [In oAuthplayground 1. Select People API -Contact; Exchange authrorisatin code for tokens; List possible options: Contacts V3-> List contacts ]
         # Above actions, gives you this url: https://www.google.com/m8/feeds/contacts/default/full/ (Added options are to get all pages data at once in JSON frmt)
         $Response = Invoke-RestMethod -Uri "https://www.google.com/m8/feeds/contacts/default/full?start-index=1&max-results=999999&alt=json" -Method Get -Headers $headers        
@@ -61,6 +60,67 @@ Function Get-NameAndNumberFromGoogleContacts{
     End{}
 }
 
-# Need a function to set - import contacts to keep data uptodate in cloud
+# Normalise contacts as per the format of numbers found in lycamobile (for matching)
+Function Get-NormalizedContactNumbers{
+    [CmdletBinding()]
+    Param(
+        [parameter(Mandatory,ValueFromPipeline)]
+        [object[]]$Contacts
+    )
+    Begin{}
+    Process{
+        # Normalise contact numbers for lookup with actual numbers from lycamobile report
+        foreach($Contact in $Contacts){
+            # Normalise contact numbers as per the format in lycamobile (so remove spaces, '-' and '+' from the numbers)
+            $Contact.Number = $Contact.Number -replace '-','' -replace ' ','' -replace '\+',''
+            Write-Host $Contact.Number
 
-# Need a function to create authentication token on run time (since tokens expire)
+            # We intend to match the last 9 digits only (since for ex: for NL, a number in lycamobile report 31612345678 could be stored in google as 0612345678)
+            $matchDigitsCount = 9
+            $lengthNr = $Contact.Number.Length
+            if ($lengthNr -gt $matchDigitsCount){
+                $startIndex = $lengthNr - $matchDigitsCount
+                $Contact.Number = $Contact.Number.Substring($startIndex, $matchDigitsCount)
+            }
+        }
+        return $Contacts
+    }
+    End{}
+}
+
+# Get Contact numbers for dialled numbers
+Function Get-ContactNamesForDialledNumbers{
+    [CmdletBinding()]
+    Param(
+        [Parameter(Mandatory=$True, HelpMessage="Array of unique dialled numbers")]
+        [String[]] $PhoneNumbers,
+
+        [Parameter(Mandatory=$True, HelpMessage="Array of unique dialled numbers")]
+        [object[]]$NormalizedContacts
+    )
+    Begin{}
+    Process{
+        # For each phone number get the corresponding lookup name from the NormalizedContacts Dictionary
+        $Names = [String[]]@()
+        foreach($PhoneNumber in $PhoneNumbers){
+            # Check the length of PhoneNumber. If less than 9, start index remains 0. Otherwise, we skip first few digits to only get last 9 digits.
+            $lengthNr = $PhoneNumber.Length
+            $startIndex = 0
+            $matchDigitsCount = 9
+            if ($lengthNr -gt $matchDigitsCount){
+                $startIndex = $lengthNr - $matchDigitsCount
+            }
+            
+            # We intend to match the last 9 digits only (since for ex: for NL, a number in lycamobile report 31612345678 could be stored in google as 0612345678)            
+            $index = [array]::indexof($NormalizedContacts.Number, $PhoneNumber.Substring($startIndex, $matchDigitsCount) )
+            Write-Verbose "Matching number found in GoogleContacts @: $index"
+            if($index -eq -1){
+                $Names += ' '
+            }else{  
+                $Names += $NormalizedContacts.Name[$index]
+            }
+        }      
+        return $Names
+    }
+    End{}
+}
