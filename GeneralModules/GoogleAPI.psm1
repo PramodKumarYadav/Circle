@@ -2,19 +2,25 @@
 Function Get-GAuthToken{
     [CmdletBinding()]
     Param(
-        [Parameter(Mandatory=$True, HelpMessage="Taken manually by giving valid client Id and ClientSecret in: https://developers.google.com/oauthplayground/")]
-        [String] $RefreshToken,
-
-        [Parameter(Mandatory=$True, HelpMessage="Client ID received from Google by manually creating OAuth credentials")]
-        [String] $ClientID,
-
-        [Parameter(Mandatory=$True, HelpMessage="Client secret received from Google by manually creating OAuth 2.0 credentials")]
-        [String] $ClientSecret
+        [Parameter(Mandatory=$True, HelpMessage="Path of your secrets json file where all your secrets are stored")]
+        [String] $PathDirectorySecrets
     )
     Begin{
         # Credits To: https://www.reddit.com/r/PowerShell/comments/7ax36a/powershell_and_google_contacts_api/ 
     }
     Process{
+        # Get client_id and client_secret from your Secrets\client_secret*.json file
+        $ClientSecretFile = Get-ChildItem "$PathDirectorySecrets\client_secret*.json" -Recurse
+        $jsonObj = Get-Content $ClientSecretFile | ConvertFrom-Json
+
+        # Get Client ID, Secret and refresh token from this file
+        $ClientID = $jsonObj.web.client_id
+        $ClientSecret = $jsonObj.web.client_secret
+        # For now, get refresh token from https://developers.google.com/oauthplayground/ and add it manually in the secrets file (to avoid exposing it here)
+        # Process to use oAuth tokens based on your client id and secret is here: https://monteledwards.com/2017/03/05/powershell-oauth-downloadinguploading-to-google-drive-via-drive-api/ 
+        $RefreshToken = $jsonObj.web.refresh_token 
+
+        # Build URI and get access token
         $grantType = "refresh_token"
         $requestUri = "https://accounts.google.com/o/oauth2/token" 
         $GAuthBody = "refresh_token=$RefreshToken&client_id=$ClientID&client_secret=$ClientSecret&grant_type=$grantType"

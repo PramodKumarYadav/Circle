@@ -9,4 +9,7 @@ foreach($module in $modules){
 }
 
 # Give name of functions that you want to call here. example is given below.
-Get-NameAndNumberFromGoogleContacts
+$accessToken = Get-GAuthToken -PathDirectorySecrets "$rootDir\Secrets" 
+
+$Contacts = Get-NameAndNumberFromGoogleContacts -accessToken $accessToken
+$Contacts | ForEach-Object {[PSCustomObject]$_} | Format-Table -AutoSize 
