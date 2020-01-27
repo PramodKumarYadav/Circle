@@ -38,13 +38,14 @@
 
     <img src= "../Images/NavigationMenu.png" >
 --------
-3. Enable Contacts API  
+3. ___Enable Contacts API  
     <img src= "../Images/APIsAndServices-Dashboard.png">
     <img src= "../Images/EnableAPIsAndServices.png">
     <img src= "../Images/ContactsAPI.png">
     <img src= "../Images/EnableContactsAPI.png">
-### 4. Create Credentials (oAuth keys:  Client ID and Client Secret keys)
-    * Either from the ContactsAPI page as shown below.
+--------
+4. ___Create Credentials (oAuth keys:  Client ID and Client Secret keys)
+    __Either from the ContactsAPI page as shown below.
     <img src= "../Images/CreateCredentials.png">
     <img src= "../Images/Credentials-oAuthClientID.png">
     <img src= "../Images/SetProductNameOnConsentScreen.png">
@@ -56,17 +57,18 @@
     <img src= "../Images/CreateoAuthClientID.png">
     <img src= "../Images/ClientIDAndClientSecretCreated.png">
     
-    #### You can also view this anytime from the credentials page (or even set up from there as shown below)
+    __You can also view this anytime from the credentials page (or even set up from there as shown below)
     <img src= "../Images/CredentialsMenu.png">
     <img src= "../Images/ViewCredentials.png">
     <img src= "../Images/ViewClientIDAndClientSecret.png">
-### 5. Save the keys as a JSON file in your Secrets directory (this folder).
+--------
+5. ___Save the keys as a JSON file in your Secrets directory (this folder).
 
     <img src= "../Images/DownloadJSON.png">
     <img src= "../Images/DownloadedFile.png">
     <img src= "../Images/CopyFileFromDownloads.png">
     <img src= "../Images/MoveFileToSecrets.png">
-
+--------
     #### Or from the 
 3. [Create oAuth keys:  Client ID and Client Secret keys](https://developers.google.com/identity/protocols/OpenIDConnect#getcredentials)
 
