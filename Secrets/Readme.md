@@ -15,7 +15,17 @@
 # Reference
 * [Solution to get Names-Numbers](https://www.reddit.com/r/PowerShell/comments/7ax36a/powershell_and_google_contacts_api/)
 
-# Steps to create a Google project and ClientID and ClientSecret
+# Summary: Steps to create a Google project and ClientID and ClientSecret
+1. Create a Google project.
+2. Enable Contacts API.
+3. Create oAuth credentials i.e. Client ID and Client Secret keys
+4. Save the keys as a JSON file in your Secrets directory (this folder).
+    - You dont have to rename the long file name (but if you want, you can. Just dont change the file extension. Keep it as .json).
+    - All the files in Secrets directory (Except readme.md) are ignored. So you dont have to worry about accidentally publishig it on say github.
+    - Do not add any other file here (atleast not a json file).
+    - Your secrets are safe on your computer (as long as your computer is safe from viruses i.e.)
+
+# Detailed: Step by step instructions.
 1. [Create a google project](https://console.cloud.google.com/cloud-resource-manager)
 
     <img src= "../Images/CreateProject.png">
@@ -44,6 +54,11 @@
     <img src= "../Images/CredentialsMenu.png">
     <img src= "../Images/ViewCredentials.png">
     <img src= "../Images/ViewClientIDAndClientSecret.png">
+5. Save the keys as a JSON file in your Secrets directory (this folder).
+    <img src= "../Images/DownloadJSON.png">
+    <img src= "../Images/DownloadedFile.png">
+    <img src= "../Images/CopyFileFromDownloads.png">
+    <img src= "../Images/MoveFileToSecrets.png">
 
     * Or from the 
 3. [Create oAuth keys:  Client ID and Client Secret keys](https://developers.google.com/identity/protocols/OpenIDConnect#getcredentials)
