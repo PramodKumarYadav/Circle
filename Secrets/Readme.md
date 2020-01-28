@@ -25,6 +25,9 @@
     - All the files in Secrets directory (Except readme.md) are ignored. So you dont have to worry about accidentally publishing it on say github.
     - Thus your secrets are safe on your computer (as long as your computer is safe from viruses i.e.)
     - Do not add any other file here (atleast not a json file).
+5. To ensure that all your phone contacts are synced on google contacts, sync your contacts with google contacts. 
+    - If you are on Iphone, follow this one time instructions to [sync your contacts from icloud to google contacts](https://www.tomsguide.com/us/import-iphone-contacts-into-gmail,news-21221.html)
+    - If you are on android, checkout how to sync your contacts manually to google contacts (there are many videos on youtube. I dont have android so cant test this.)
 
 # Detailed: 
 ## Step by step instructions.
@@ -68,6 +71,10 @@
     <img src= "../Images/DownloadedFile.png">
     <img src= "../Images/CopyFileFromDownloads.png">
     <img src= "../Images/MoveFileToSecrets.png">
+--------
+6. ___Sync all your icloud contacts to google contacts.___
+    * If for some reason, link on summary section, didnt open, below is pdf instructions of the same html page:
+    [Import-iphone-contacts-into-gmail](../ExternalModules/GoogleAPIs/Import-iphone-contacts-into-gmail.pdf)
 --------
     #### Or from the 
 3. [Create oAuth keys:  Client ID and Client Secret keys](https://developers.google.com/identity/protocols/OpenIDConnect#getcredentials)
