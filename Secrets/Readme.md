@@ -1,19 +1,5 @@
-# To generate authentication tokens manually, use this website
-* [To create your google project](https://console.cloud.google.com/cloud-resource-manager)
-* [To create your oAuth keys: Client ID and Client Secret](https://developers.google.com/identity/protocols/OpenIDConnect#getcredentials)
-* [To get Refresh tokens (Indefinite duration)](https://monteledwards.com/2017/03/05/powershell-oauth-downloadinguploading-to-google-drive-via-drive-api/)
-    * [Set a redirect URI (needed for getting indefinite refresh tokens)](https://developers.google.com/identity/protocols/OpenIDConnect#setredirecturi) 
-
-# Google Developers
-* [Google oauthplayground](https://developers.google.com/oauthplayground/ )
-    * [A how to video on working with Google oauthplayground](https://www.youtube.com/watch?v=nRF_HdrYeGE ) 
-* [People API Get URLs for contact details](https://developers.google.com/people/api/rest/v1/people/get) 
-
-# Powershell scripts to work with oAuth tokens
-* [Install-Module -Name GoogleOAuth2](https://www.powershellgallery.com/packages/GoogleOAuth2/1.0.1.0)
-
-# Reference
-* [Solution to get Names-Numbers](https://www.reddit.com/r/PowerShell/comments/7ax36a/powershell_and_google_contacts_api/)
+# Below you will find a short and detailed summary on how to set up your google contacts. 
+- If you set up this option, your reports will be more richer with contact names information. Highly recommended!
 
 # Summary: 
 ## Steps to create a Google project and ClientID and ClientSecret
@@ -76,10 +62,28 @@
     * If for some reason, link on summary section, didnt open, below is pdf instructions of the same html page:
     [Import-iphone-contacts-into-gmail](../ExternalModules/GoogleAPIs/Import-iphone-contacts-into-gmail.pdf)
 --------
+
+
+# Reference
+* [How to insert images in github readme.md files](https://youtu.be/hHbWF1Bvgf4)
+* [Solution to get Names-Numbers](https://www.reddit.com/r/PowerShell/comments/7ax36a/powershell_and_google_contacts_api/)
+
+# To generate authentication tokens manually, use this website
+* [To create your google project](https://console.cloud.google.com/cloud-resource-manager)
+* [To create your oAuth keys: Client ID and Client Secret](https://developers.google.com/identity/protocols/OpenIDConnect#getcredentials)
+* [To get Refresh tokens (Indefinite duration)](https://monteledwards.com/2017/03/05/powershell-oauth-downloadinguploading-to-google-drive-via-drive-api/)
+    * [Set a redirect URI (needed for getting indefinite refresh tokens)](https://developers.google.com/identity/protocols/OpenIDConnect#setredirecturi) 
+
+# Google Developers
+* [Google oauthplayground](https://developers.google.com/oauthplayground/ )
+    * [A how to video on working with Google oauthplayground](https://www.youtube.com/watch?v=nRF_HdrYeGE ) 
+* [People API Get URLs for contact details](https://developers.google.com/people/api/rest/v1/people/get) 
+
+# Powershell scripts to work with oAuth tokens
+* [Install-Module -Name GoogleOAuth2](https://www.powershellgallery.com/packages/GoogleOAuth2/1.0.1.0)
+
+# to sort out yet out
     #### Or from the 
 3. [Create oAuth keys:  Client ID and Client Secret keys](https://developers.google.com/identity/protocols/OpenIDConnect#getcredentials)
 
     
-
-# Reference
-* [How to insert images in github readme.md files](https://youtu.be/hHbWF1Bvgf4)
