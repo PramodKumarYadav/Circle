@@ -100,7 +100,7 @@ Function Get-ContactNamesForDialledNumbers{
         [Parameter(Mandatory=$True, HelpMessage="Array of unique dialled numbers")]
         [String[]] $PhoneNumbers,
 
-        [Parameter(Mandatory=$True, HelpMessage="Array of unique dialled numbers")]
+        [Parameter(Mandatory=$True, HelpMessage="Normalized Array of all numbers stored in Google contacts")]
         [object[]]$NormalizedContacts
     )
     Begin{}

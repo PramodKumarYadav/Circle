@@ -12,7 +12,7 @@ However, I think once I am done with it, with minor modifications, you would be 
 
 # Design
 1. - [ ] Download account statement(s) from Lycamobile and copy them to TestData Directory (one or more allowed)
-    * Note: The only option is to get a PDF download.
+    * Note: The only option at their website is to get a report as PDF download.
     * Input: Lycamobile login details of user.
     * Output: PDF call logs file(s).
 2. - [x] Convert PDF to TXT document.
@@ -60,7 +60,7 @@ If you want to run the main script with your lycamobile account statement,
 * - [ ] Option to filter on dates
 * - [x] Option to show names in final output 
     - (If user chooses to sync his contacts to google contacts from his smart phone and provide a secrets json file in Secrets directory. Steps shared here.)
-    - [ ] Full Instructions on how to do this.
+    - [x] Full Instructions on how to do this.
 * - [ ] Option to download data from lycamobile via script.
 * - [x] Option to report on more than one pdf statements at the same time.
 * - [x] Sort final stats as per CallFrequency (This will show who you call the most on top).
