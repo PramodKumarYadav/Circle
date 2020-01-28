@@ -77,9 +77,8 @@ Function Get-NormalizedContactNumbers{
     Process{
         # Normalise contact numbers for lookup with actual numbers from lycamobile report
         foreach($Contact in $Contacts){
-            # Normalise contact numbers as per the format in lycamobile (so remove spaces, '-' and '+' from the numbers)
-            $Contact.Number = $Contact.Number -replace '-','' -replace ' ','' -replace '\+',''
-            Write-Host $Contact.Number
+            # Normalise contact numbers as per the format in lycamobile (so remove '-', '+', '(', ')', and all white spaces from the numbers)
+            $Contact.Number = $Contact.Number -replace '-','' -replace '\+','' -replace '\(','' -replace '\)','' -replace '\s+', ''
 
             # We intend to match the last 9 digits only (since for ex: for NL, a number in lycamobile report 31612345678 could be stored in google as 0612345678)
             $matchDigitsCount = 9
