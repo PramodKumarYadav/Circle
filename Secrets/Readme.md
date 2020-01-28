@@ -72,7 +72,7 @@
 * [To create your google project](https://console.cloud.google.com/cloud-resource-manager)
 * [To create your oAuth keys: Client ID and Client Secret](https://developers.google.com/identity/protocols/OpenIDConnect#getcredentials)
 * [To get Refresh tokens (Indefinite duration)](https://monteledwards.com/2017/03/05/powershell-oauth-downloadinguploading-to-google-drive-via-drive-api/)
-    * [Set a redirect URI (needed for getting indefinite refresh tokens)](https://developers.google.com/identity/protocols/OpenIDConnect#setredirecturi) 
+* [Set a redirect URI (needed for getting indefinite refresh tokens)](https://developers.google.com/identity/protocols/OpenIDConnect#setredirecturi) 
 
 # Google Developers
 * [Google oauthplayground](https://developers.google.com/oauthplayground/ )
@@ -81,9 +81,5 @@
 
 # Powershell scripts to work with oAuth tokens
 * [Install-Module -Name GoogleOAuth2](https://www.powershellgallery.com/packages/GoogleOAuth2/1.0.1.0)
-
-# to sort out yet out
-    #### Or from the 
-3. [Create oAuth keys:  Client ID and Client Secret keys](https://developers.google.com/identity/protocols/OpenIDConnect#getcredentials)
 
     
