@@ -31,7 +31,7 @@ However, I think once I am done with it, with minor modifications, you would be 
     * Input: A filtered CSV file with only (Voice) call logs.
     * Output: An array of frequency (count of calls/per phone number).
 7. - [x] Get the names from google contacts (if user has signed up for this)
-    * Input: Phone numbers array(point 5) and location of Secrets Json [Detailed steps to do this are here](../Secrets/Readme.md)
+    * Input: Phone numbers array(point 5) and location of Secrets Json [Detailed steps to do this are here](./Secrets/Readme.md)
     * Output: An array of Names corresponding to these called numbers.
 8. - [x] Make a matrix with these three parameters  
     * Note: Goal is to create this matrix is such a way, that it can be used to create any output format as desired
