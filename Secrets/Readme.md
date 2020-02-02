@@ -62,6 +62,7 @@
 --------
 5. ___Get a refresh token using client id and client secret and add to secrets json file.___
     * [Navigate to Google oauthplayground](https://developers.google.com/oauthplayground/ )
+    - NOTE: Due to the above site being down, I cant add detailed steps  here. To be added in next commit push.
     - Go to settings and check option "use your own OAuth credentials". Provide your client Id and client Secret and Close. [Curtesy reference](https://monteledwards.com/2017/03/05/powershell-oauth-downloadinguploading-to-google-drive-via-drive-api/)
     
     <img src= "../Images/RefreshTokenOwnOAuthCredentials.png">
