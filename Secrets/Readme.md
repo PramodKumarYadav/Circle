@@ -62,17 +62,33 @@
 --------
 5. ___Get a refresh token using client id and client secret and add to secrets json file.___
     * [Navigate to Google oauthplayground](https://developers.google.com/oauthplayground/ )
-    - NOTE: Due to the above site being down, I cant add detailed steps  here. To be added in next commit push.
-    - Go to settings and check option "use your own OAuth credentials". Provide your client Id and client Secret and Close. [Curtesy reference](https://monteledwards.com/2017/03/05/powershell-oauth-downloadinguploading-to-google-drive-via-drive-api/)
-    
+    - Go to settings and check option "use your own OAuth credentials". 
+    - Provide your client Id and client Secret and Close. [Curtesy reference](https://monteledwards.com/2017/03/05/powershell-oauth-downloadinguploading-to-google-drive-via-drive-api/)  
     <img src= "../Images/RefreshTokenOwnOAuthCredentials.png">
-    * [Set a redirect URI (needed for step in getting indefinite refresh tokens)](https://developers.google.com/identity/protocols/OpenIDConnect#setredirecturi) 
-    - Select the contact-> and API for scope.
+    - From the left pane now click on Step1 and select "Contacts v3" -> "https://www.goggle.com/m8/feeds/
+    - click Authroize APIs.
+    - Oops we get an error. We forgot to give a redirect url while creating our tokens.
+    <img src= "../Images/RedirectURLnotSetUp.png">
+    - Go to your project (say MyProject). Click on Credentials and now click on the edit icon to edit the details in oAuth 2.0 ClientID.
+    <img src= "../Images/EditCredentials.png">
+    <img src= "../Images/AddRedirectURI.png">
+    <img src= "../Images/AddedRedirectURI.png">
+    - Now go back and try again with 'Step1' above to "Contacts v3" -> "https://www.goggle.com/m8/feeds/ and authorize APIs.
+    - This time you should be able to get an authentical code as shown below. First it will ask for Google signin.
+    <img src= "../Images/GoogleSignIn.png">
+    <img src= "../Images/GoToAdvanced.png">
+    <img src= "../Images/GoToMyProject.png">
+    <img src= "../Images/Allow.png">
+    <img src= "../Images/ConfirmAllow.png">
     - Exchange the authentication code for tokens.
+    <img src= "../Images/ExchangeCodeForTokens.png">
     - Copy the refreh token from here and add to client-secret_****.json
     - Say add below  "client_secret": "abcdedfghijklmnopqur", as
                       "refresh_token": "1//04uYuNrwL0oN5CgYIARAAGAQSNwF-L9Irr8KeDh3g3yBOl6erDwSWKQPn_cJOfU2YwkRak5rqRZ7PRCr38CXOpi6xmjXaKSknT68",
-    - Save and close. 
+    <img src= "../Images/CopyRefreshToken.png">
+    <img src= "../Images/AddRefreshTokenToJSON.png">
+    - We are all set now to get the contacts from Google APIs.
+  
 --------
 6. ___Sync all your icloud contacts to google contacts.___
     * If for some reason, link on summary section, didnt open, below is pdf instructions of the same html page:
@@ -80,10 +96,10 @@
     - You are good to go with your setup! 
 --------
 
-
 # Reference
 * [How to insert images in github readme.md files](https://youtu.be/hHbWF1Bvgf4)
 * [Solution to get Names-Numbers](https://www.reddit.com/r/PowerShell/comments/7ax36a/powershell_and_google_contacts_api/)
+* [Set a redirect URI (needed for step in getting indefinite refresh tokens)](https://developers.google.com/identity/protocols/OpenIDConnect#setredirecturi) 
 
 # To generate authentication tokens manually, use this website
 * [To create your google project](https://console.cloud.google.com/cloud-resource-manager)
