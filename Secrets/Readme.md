@@ -70,7 +70,7 @@
     - click Authroize APIs.
 
      <img src= "../Images/01ScopeContacts.png">
-     
+
     - Oops we get an error. We forgot to give a redirect url while creating our tokens.
     <img src= "../Images/RedirectURLnotSetUp.png">
     - Go to your project (say MyProject). Click on Credentials and now click on the edit icon to edit the details in oAuth 2.0 ClientID.
@@ -89,9 +89,7 @@
 
     <img src= "../Images/ExchangeCodeForTokens.png">
 
-    - Copy the refreh token from here and add to client-secret_****.json
-    - Say add below  "client_secret": "abcdedfghijklmnopqur", as
-                      "refresh_token": "1//04uYuNrwL0oN5CgYIARAAGAQSNwF-L9Irr8KeDh3g3yBOl6erDwSWKQPn_cJOfU2YwkRak5rqRZ7PRCr38CXOpi6xmjXaKSknT68",
+    - Copy the refresh token from here and add to client-secret_****.json
     <img src= "../Images/CopyRefreshToken.png">
     <img src= "../Images/AddRefreshTokenToJSON.png">
     - We are all set now to get the contacts from Google APIs.
