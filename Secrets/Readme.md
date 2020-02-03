@@ -65,6 +65,7 @@
     - Go to settings and check option "use your own OAuth credentials". 
     - Provide your client Id and client Secret and Close. [Curtesy reference](https://monteledwards.com/2017/03/05/powershell-oauth-downloadinguploading-to-google-drive-via-drive-api/)  
     <img src= "../Images/RefreshTokenOwnOAuthCredentials.png">
+    
     - From the left pane now click on Step1 and select "Contacts v3" -> "https://www.goggle.com/m8/feeds/
     - click Authroize APIs.
     - Oops we get an error. We forgot to give a redirect url while creating our tokens.
@@ -80,8 +81,11 @@
     <img src= "../Images/GoToMyProject.png">
     <img src= "../Images/Allow.png">
     <img src= "../Images/ConfirmAllow.png">
+    
     - Exchange the authentication code for tokens.
+
     <img src= "../Images/ExchangeCodeForTokens.png">
+    
     - Copy the refreh token from here and add to client-secret_****.json
     - Say add below  "client_secret": "abcdedfghijklmnopqur", as
                       "refresh_token": "1//04uYuNrwL0oN5CgYIARAAGAQSNwF-L9Irr8KeDh3g3yBOl6erDwSWKQPn_cJOfU2YwkRak5rqRZ7PRCr38CXOpi6xmjXaKSknT68",
