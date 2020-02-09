@@ -54,10 +54,10 @@ function Get-Circle{
 
             # Get all Called phone numbers from the csv
             $NumberColumnName = 'Dialled number' 
-            $PhoneNumbers = Get-UniquePhoneNumbers -PathOfCSV "$FilteredCSVFile " -ColumnName "$NumberColumnName"
+            $PhoneNumbers = Get-UniquePhoneNumbers -PathOfCSV "$FilteredCSVFile" -ColumnName "$NumberColumnName"
 
             # Get the frequency of calls
-            $CallFrequency = Get-CallFrequency -PathOfCSV "$FilteredCSVFile " -ColumnName "$NumberColumnName"
+            $CallFrequency = Get-CallFrequency -PathOfCSV "$FilteredCSVFile" -ColumnName "$NumberColumnName"
 
             # Get the names of people called (If user has set up this option to provide a Secrets json with Client ID and Client Secret)
             $Names = @() # Initialize this array so that if user has not chosen for this option, the Get-CallStatistics function can still handle it with this empty declaration
