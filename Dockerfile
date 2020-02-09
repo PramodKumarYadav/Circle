@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell:preview-alpine-3.8
+FROM mcr.microsoft.com/powershell
 
 WORKDIR /circle
 COPY . /circle/
