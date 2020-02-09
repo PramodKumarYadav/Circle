@@ -60,9 +60,11 @@ function Get-Circle{
             $CallFrequency = Get-CallFrequency -PathOfCSV "$FilteredCSVFile" -ColumnName "$NumberColumnName"
 
             # Get the names of people called (If user has set up this option to provide a Secrets json with Client ID and Client Secret)
-            $Names = @() # Initialize this array so that if user has not chosen for this option, the Get-CallStatistics function can still handle it with this empty declaration
             $Names = Get-ContactNames -PathSecretsDir "$RootDir\Secrets" -PhoneNumbers $PhoneNumbers
-
+            if($null -eq $Names){
+                $Names = @()
+            }
+            
             # Get the call statistics matrix based on phone numbers and their frequency
             $PSOrderedDictionaryArray  = Get-CallStatistics -PhoneNumbers $PhoneNumbers -CallFrequency $CallFrequency -Names  $Names
 

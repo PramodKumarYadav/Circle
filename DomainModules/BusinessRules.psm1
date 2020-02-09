@@ -42,8 +42,20 @@ Function Get-ContactNames{
         [Parameter(Mandatory=$True, HelpMessage="Array of unique dialled numbers")]
         [String[]] $PhoneNumbers
     )
-    Begin{}
+    Begin{
+        
+    }
     Process{
+        
+        $ClientSecretFile = Get-ChildItem "$PathSecretsDir\client_secret*.json" -Recurse
+        $names = @() # Initialize this array so that if user has not chosen for this option, the Get-CallStatistics function can still handle it with this empty declaration
+        if($ClientSecretFile){
+            Write-Host "client_secret file available @:$PathSecretsDir .Can provide names."
+        }else{
+            Write-Host "client_secret file not available @:$PathSecretsDir .Can not provide names."
+            return $names
+        }
+        
         # Get Access Token
         $accessToken = Get-GAuthToken -PathDirectorySecrets "$PathSecretsDir"  
 
@@ -65,7 +77,7 @@ Function Get-CallStatistics{
     [CmdletBinding()]
     Param(
         [Parameter(Mandatory=$False, HelpMessage="Contact Names array (optional")]
-        [String[]] $Names,
+        [object[]] $Names, # Default is empty array.If not provided.
 
         [Parameter(Mandatory=$True, HelpMessage="Phone Numbers array")]
         [String[]] $PhoneNumbers,
