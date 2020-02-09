@@ -45,8 +45,15 @@ However, I think once I am done with it, with minor modifications, you would be 
     * Output: Based on the choice made by user in the main.ps1, it could be a JSON/CSV/Table output (All outputs or any combination, possible at any given time)
 
 # Requirements
+## If installing local
 * Windows OS with Powershell 5 or more installed on it.
 * Having lycamobile login credentials to be able to download pdf statements from their website.
+## If runing on docker 
+* Docker desktop installed.
+* clone the project.
+* PS D:\Circle> docker image build -t circle:v1 .
+* PS D:\Circle> docker container run -it circle:v1
+* PS /circle> ./main.ps1
 
 # Execute 
 If you want to run the main script with your lycamobile account statement, 
