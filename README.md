@@ -51,6 +51,8 @@ However, I think once I am done with it, with minor modifications, you would be 
 ## If runing on docker 
 * Docker desktop installed.
 * clone the project.
+* Download and add the phone report(s) pdf(s) you want to analyse to TestData directory.
+* [Add the client_secret file if you wish to have names with numbers using googles API.](./Secrets/Readme.md)
 * PS D:\Circle> docker image build -t circle:v1 .
 * PS D:\Circle> docker container run -it circle:v1
 * PS /circle> ./main.ps1
