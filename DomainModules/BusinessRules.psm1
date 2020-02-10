@@ -52,7 +52,8 @@ Function Get-ContactNames{
         if($ClientSecretFile){
             Write-Host "client_secret file available @:$PathSecretsDir .Can provide names."
         }else{
-            Write-Host "client_secret file not available @:$PathSecretsDir .Can not provide names."
+            Write-Host "client_secret file not available @:$PathSecretsDir"
+            Write-Host "Can not provide names. If you want to have names, do setup as shown in readme.md file @Secrets dir"
             return $names
         }
         
@@ -85,7 +86,11 @@ Function Get-CallStatistics{
         [Parameter(Mandatory=$True, HelpMessage="Call Frequency array")]
         [String[]] $CallFrequency   
     )
-    Begin{}
+    Begin{
+        if($null -eq $Names){
+            $Names = @()
+        }
+    }
     Process{
         $PSOrderedDictionaryArray = @()
         for($i = 0; $i -lt $PhoneNumbers.Count; $i++){
