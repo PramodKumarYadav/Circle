@@ -1,8 +1,14 @@
-FROM mcr.microsoft.com/powershell:7.0.0-rc.2-alpine-3.8
-
-# vscode or the powershell extension as 2019-09-17 uses /usr/bin/stat during remote debugging connection, but this distro has it in /bin/stat. 
-# To replicate the issue: remove the line, build&run, attach to container, install powershell extension via vscode extensions UI, check terminal output.
-RUN cp /bin/stat /usr/bin/stat
+FROM mcr.microsoft.com/powershell
 
 WORKDIR /circle
 COPY . /circle/
+
+# Execute and exit mode
+ENTRYPOINT [ "pwsh", "-File", "/circle/main.ps1" ]
+
+# debug-mode (for say working with vs code)
+# CMD tail -f /dev/null
+
+# (location and version of powershell in the container. In debug mode:)
+    # PS /circle> which pwsh 
+    # /opt/microsoft/powershell/6/pwsh
