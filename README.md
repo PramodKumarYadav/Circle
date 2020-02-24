@@ -1,4 +1,4 @@
-# :phone: Circle 
+# ☎ : Circle 
 
 The idea behind the project is to see how our social health is. We have hundreds of contacts in our call list and yet there are often a handful of people we call.
 
