@@ -239,37 +239,3 @@ function Clear-Directory {
 		Write-Information "$Path doesn't exist!"
 	}
 }
-
-function Convert-FixedLengthRecordsToCSV {
-	param(
-            [String]$Path,
-            [Int[]]$Positions,
-            [String]$Delimiter
-        )
-    
-    # get fixed-column width text content, 
-    $content = Get-Content -Path $Path
-
-    #Fixed length from end (of €0.00)
-    $fixedlengthFromEnd = 5
-
-    $newContent = @()
-    foreach($line in $content){
-        # Add the last delimiter position based on the length of line
-        $newPositions = $Positions + ($line.Length - $fixedlengthFromEnd) 
-
-        # define column breaks in descending order 
-        # Reason: so that it doesnt impact position of other delimiters - when inserting them in line. which would change if done in asc order.
-        $newPositions = $newPositions | Sort-Object -Descending
-
-        # Insert delimiter at each position starting from the end 
-        foreach($position in $newPositions){
-            $line = $line.Insert($position, $Delimiter)  
-        }
-
-        # Add this updated line to new content
-        $newContent += $line
-    } 
-
-    return $newContent
-}
