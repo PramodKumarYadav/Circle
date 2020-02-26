@@ -34,7 +34,7 @@ function Get-Circle{
             $PDFName = $PDFName -replace '\s', '_'
             Write-Host "Creating call log analysis for ... $PDFName"
 
-            # Define variable to store all TestResults
+            # Initialise TestResults directory to store all results
             $TestResultsDir = "$RootDir\TestResults\$PDFName"
             Initialize-Directory -Path $TestResultsDir
 
@@ -42,22 +42,36 @@ function Get-Circle{
             $RawTXTFile = "$TestResultsDir\RawTXTFile.txt"
             Convert-PDF2TXT -file "$PDFFile" > "$RawTXTFile"
 
-            # Filter out the relevant records from this RawFile
-            $FilteredTXTFile = "$TestResultsDir\FilteredTXTFile.txt"
-            $RegExDataToFilter = '(VOICE).*'
-            Select-DataRecords -InputFile "$RawTXTFile" -OutputFile "$FilteredTXTFile" -RegEx "$RegExDataToFilter"
+            # Find out what kind of report it is (i.e. lycamobile or lebara)
+            $reportType = Get-ReportType -Path "$RawTXTFile"
+
+            # Proceed with the application settings as per the selected report
+            if($reportType -eq 'Unknown'){
+                break;
+            }
+
+            # Get application settings for report under test
+            $appSettingsJson = Get-Content -Path "$RootDir\appsettings.json" | ConvertFrom-Json 
+            $reportJson = $appSettingsJson.$reportType
+
+            # Filter out the relevant data records from this RawFile
+            $DataRecordsTXTFile = "$TestResultsDir\DataRecordsTXTFile.txt"
+            Select-DataRecords -InputFile "$RawTXTFile" -OutputFile "$DataRecordsTXTFile" -RegEx $reportJson.FilterRecordsRegex
+
+            # Convert these txt data records into parceable data records
+            $ParceableTXTFile = Convert-RawTXT2ParceableTXTFile -Report "$reportType" `
+                                                                -TestResultsDir "$TestResultsDir" 
 
             # Convert this TXT file to a proper CSV file
-            $FilteredCSVFile = "$TestResultsDir\FilteredCSVFile.csv"
-            $Header = 'Call Type','Customer number','Dialled number','Date','Time','CallDuration','Cost'
-            Import-Csv "$FilteredTXTFile" -delimiter " " -Header $Header | Export-Csv "$FilteredCSVFile"
+            $ParsedCSVFile = "$TestResultsDir\ParsedCSVFile.csv"
+            $Header = $reportJson.Header.split(",") # We need a header array from the string value.
+            Import-Csv "$ParceableTXTFile" -delimiter $reportJson.Delimiter -Header $Header | Export-Csv "$ParsedCSVFile"
 
             # Get all Called phone numbers from the csv
-            $NumberColumnName = 'Dialled number' 
-            $PhoneNumbers = Get-UniquePhoneNumbers -PathOfCSV "$FilteredCSVFile" -ColumnName "$NumberColumnName"
+            $PhoneNumbers = Get-UniquePhoneNumbers -PathOfCSV "$ParsedCSVFile" -ColumnName $reportJson.NumberColumnName
 
             # Get the frequency of calls
-            $CallFrequency = Get-CallFrequency -PathOfCSV "$FilteredCSVFile" -ColumnName "$NumberColumnName"
+            $CallFrequency = Get-CallFrequency -PathOfCSV "$ParsedCSVFile" -ColumnName $reportJson.NumberColumnName
 
             # Get the names of people called (If user has set up this option to provide a Secrets json with Client ID and Client Secret)
             $Names = Get-ContactNames -PathSecretsDir "$RootDir\Secrets" -PhoneNumbers $PhoneNumbers
