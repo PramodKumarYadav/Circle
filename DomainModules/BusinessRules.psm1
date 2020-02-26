@@ -23,30 +23,23 @@ function Get-ReportType {
 function Convert-RawTXT2ParceableTXTFile {
 	param(
             [String] $Report,
-            [String] $TestResultsDir
+            [String] $InputFile,
+            [String] $OutputFile
         )
 
-    # Data records file is the input 
-    $DataRecordsTXTFile = "$TestResultsDir\DataRecordsTXTFile.txt"
-    
     # Lycamobile, files are already parceable, So use Data records file as parceable file.
     if($Report -eq 'Lycamobile'){
-        $ParceableTXTFile = $DataRecordsTXTFile
+        Get-Content $InputFile >  $OutputFile
     }
 
-    # Lebara file needs to be fixed before it can be parsed.
-    # Convert this TXT file to a comma seperated TXT file (numbers are of varying length and contain spaces so cannot directly parse)
+    # Lebara file needs to be fixed before it can be parsed. Convert this TXT file to a comma seperated TXT file.
+    # Numbers are of varying length and contain spaces so cannot directly parse using csv with ' ' as delimiter.
     if($Report -eq 'Lebara'){
-        $ParceableTXTFile = "$TestResultsDir\ParceableTXTFile.txt"
-        
         # In lebara mobile report, there are first few fixed columns, "with a varying length phone nr", then a cost value which starts with € sign.
-        #  22/01/2020 16:45 00:00:24 31600 123 456 €0.00
-        # 21/01/2020 22:28 00:00:26 911234 567 890 €0.00
-        $newcontent = Convert-FixedLengthLebaraRecordsToCSV -Path "$DataRecordsTXTFile" -Positions @(11, 17, 26) -AddDelimiter ',' 
-        $newcontent > $ParceableTXTFile
+        #  22/01/2020 16:45 00:00:24 31600 123 456 €0.00  # fixed breakpoints can be inserted @ 11, 17, 26 positions
+        # 21/01/2020 22:28 00:00:26 911234 567 890 €0.00 # Since € position can change depending on phone nr len and cost say €12.00, this is calculated in fn.
+        Convert-FixedLengthLebaraRecordsToCSV -Path "$InputFile" -Positions @(11, 17, 26) -AddDelimiter ','  > $OutputFile
     }
-
-    return $ParceableTXTFile
 }
 
 # Parsing lebara records

@@ -59,8 +59,8 @@ function Get-Circle{
             Select-DataRecords -InputFile "$RawTXTFile" -OutputFile "$DataRecordsTXTFile" -RegEx $reportJson.FilterRecordsRegex
 
             # Convert these txt data records into parceable data records
-            $ParceableTXTFile = Convert-RawTXT2ParceableTXTFile -Report "$reportType" `
-                                                                -TestResultsDir "$TestResultsDir" 
+            $ParceableTXTFile = "$TestResultsDir\ParceableTXTFile.txt"
+            Convert-RawTXT2ParceableTXTFile -Report "$reportType" -InputFile "$DataRecordsTXTFile" -OutputFile "$ParceableTXTFile"
 
             # Convert this TXT file to a proper CSV file
             $ParsedCSVFile = "$TestResultsDir\ParsedCSVFile.csv"
