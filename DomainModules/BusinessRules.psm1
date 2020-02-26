@@ -1,21 +1,74 @@
+# Get report type
+function Get-ReportType {
+	param(
+            [String]$Path 
+        )
+    
+    # list of all reports that the framework can handle
+    $reportTypes = @('Lycamobile','Lebara')
+    foreach($report in $reportTypes){
+        $result = Get-Content -Path $Path -Raw | Select-String $report
+
+        if($result){
+            Write-Host "Input PDF is a $report report. Processing now..."
+            return $report
+        }
+    }
+
+    # If neither of above, return, not found and break
+    Write-Host "Input PDF is not a $reportTypes report. Cannot process!"
+    return 'Unknown'
+}
+# Convert Raw Txt to a parseable csv file and return the path
+function Convert-RawTXT2ParceableTXTFile {
+	param(
+            [String] $Report,
+            [String] $TestResultsDir
+        )
+
+    # Data records file is the input 
+    $DataRecordsTXTFile = "$TestResultsDir\DataRecordsTXTFile.txt"
+    
+    # Lycamobile, files are already parceable, So use Data records file as parceable file.
+    if($Report -eq 'Lycamobile'){
+        $ParceableTXTFile = $DataRecordsTXTFile
+    }
+
+    # Lebara file needs to be fixed before it can be parsed.
+    # Convert this TXT file to a comma seperated TXT file (numbers are of varying length and contain spaces so cannot directly parse)
+    if($Report -eq 'Lebara'){
+        $ParceableTXTFile = "$TestResultsDir\ParceableTXTFile.txt"
+        
+        # In lebara mobile report, there are first few fixed columns, "with a varying length phone nr", then a cost value which starts with € sign.
+        #  22/01/2020 16:45 00:00:24 31600 123 456 €0.00
+        # 21/01/2020 22:28 00:00:26 911234 567 890 €0.00
+        $newcontent = Convert-FixedLengthLebaraRecordsToCSV -Path "$DataRecordsTXTFile" -Positions @(11, 17, 26) -AddDelimiter ',' 
+        $newcontent > $ParceableTXTFile
+    }
+
+    return $ParceableTXTFile
+}
+
 # Parsing lebara records
 function Convert-FixedLengthLebaraRecordsToCSV {
 	param(
             [String]$Path,
             [Int[]]$Positions,
-            [String]$Delimiter
+            [String]$AddDelimiter
         )
     
-    # get fixed-column width text content, 
-    $content = Get-Content -Path $Path
-
-    #Fixed length from end (of €0.00)
-    $fixedlengthFromEnd = 5
-
+    # a variable to store updated content
     $newContent = @()
+
+    # get text content
+    $content = Get-Content -Path $Path
     foreach($line in $content){
+        
+        # Get position of euro symbol (most times it will be 5th from last (€0.00) but if there is cost involved (ex: €12.34), this can change.)
+        $euroPosition = $line.IndexOf("€")
+
         # Add the last delimiter position based on the length of line
-        $newPositions = $Positions + ($line.Length - $fixedlengthFromEnd) 
+        $newPositions = $Positions + $euroPosition
 
         # define column breaks in descending order 
         # Reason: so that it doesnt impact position of other delimiters - when inserting them in line. which would change if done in asc order.
@@ -23,7 +76,7 @@ function Convert-FixedLengthLebaraRecordsToCSV {
 
         # Insert delimiter at each position starting from the end 
         foreach($position in $newPositions){
-            $line = $line.Insert($position, $Delimiter)  
+            $line = $line.Insert($position, $AddDelimiter)  
         }
 
         # Add this updated line to new content
