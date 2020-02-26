@@ -1,18 +1,25 @@
 # ☎ : Circle 
 
-The idea behind the project is to see how our social health is. We have hundreds of contacts in our call list and yet there are often a handful of people we call.
+The idea behind the project is to see how our social health is. We have hundreds of contacts in our call list and yet there are often a handful of people we call. This tool, will give you insight on who in your friends and family are most closest to you and thus by contrast, who are the people who were once very close to you but you never or seldom call.
 
-This tool, will give you insight on who in your friends and family are most closest to you and thus by contrast, who are the people who were once very close to you but you never or seldom call.
+It does this by parsing the pdf phone call record from your service provider and creating insights on who you called and how often (with their names & numbers).
 
 Hope this helps in bringing friends and family closer to you.
 
 # Scope
-Since I have a lycamobile connection, the scope of the project (atleast at this moment) is to parse lyca mobile call logs and create insights from it.
-However, I think once I am done with it, with minor modifications, you would be able to run it for your telephone statements as well with other service providers as well.
+    - Lycamobile reports (Nederlands)
+    - Lebara reports (Nederlands)
+
+# Input
+1. Type: PDF reports
+2. Download account statement(s) from Lycamobile (or Lebara) and copy them to TestData Directory
+    * One or more pdfs are allowed in the TestData directory at the same time. 
+    * Both Lebara and Lyca pdf reports are allowed in the TestData directory at the same time.
+    * You can choose to name these reports as you like (or leave defaults). The tool 'looks' into the reports and finds out what kind of report it is dealing with and acts accordingly.
+    * Note: The only known option (at this moment) at their website is to get a report as PDF download.Thus we deal with PDF as input.
 
 # Design
-1. - [ ] Download account statement(s) from Lycamobile and copy them to TestData Directory (one or more allowed)
-    * Note: The only option at their website is to get a report as PDF download.
+1. - [ ] Download account statement(s) from Lycamobile (or Lebara) and copy them to TestData Directory
     * Input: Lycamobile login details of user.
     * Output: PDF call logs file(s).
 2. - [x] Convert PDF to TXT document.
@@ -44,6 +51,13 @@ However, I think once I am done with it, with minor modifications, you would be 
     * Input: A sorted hastable collection array that can be converted to any format (as per the request of user)
     * Output: Based on the choice made by user in the main.ps1, it could be a JSON/CSV/Table output (All outputs or any combination, possible at any given time)
 
+# Output
+1. Type: CSV, JSON, TXT (Table format)
+2. You will see in the test results folder
+    * ResultAsCSV.csv (code friendly format)
+    * ResultAsJSON.json (code friendly format)
+    * ResultAsTABLE.txt (most human friendly format)
+
 # Requirements
 ## If installing local
 * Windows OS with Powershell 5 or more installed on it.
@@ -55,7 +69,12 @@ However, I think once I am done with it, with minor modifications, you would be 
 * [Add the client_secret file if you wish to have names with numbers using googles API.](./Secrets/Readme.md)
 * PS D:\Circle> docker image build -t circle:v1 .
 * PS D:\Circle> docker container run -it circle:v1
-* PS /circle> ./main.ps1
+---
+**NOTE** : When run from Entrypoint (see dockerfile), this will directly give you results on command line.
+- When run from debug-mode(see dockerfile), you would need to run the main.ps1 yourself as shown below.
+- PS /circle> ./main.ps1
+
+---
 
 # Execute 
 If you want to run the main script with your lycamobile account statement, 
@@ -66,13 +85,15 @@ If you want to run the main script with your lycamobile account statement,
 5. You should see the results in directory './TestResults/*'
 
 # Feature List (to add in future)
-* - [ ] Option to filter on dates
-* - [x] Option to show names in final output 
-    - (If user chooses to sync his contacts to google contacts from his smart phone and provide a secrets json file in Secrets directory. Steps shared here.)
-    - [x] Full Instructions on how to do this.
+* - [x] Option to filter on dates [Not to implement]
+    - I have decided to keep this out of the framework. This choice should be done while downloading the reports. Not in framework.
+  - [x] Full Instructions on how to run framework.
 * - [ ] Option to download data from lycamobile via script.
 * - [x] Option to report on more than one pdf statements at the same time.
 * - [x] Sort final stats as per CallFrequency (This will show who you call the most on top).
+* - [x] Option to show names in final output 
+    - (If user chooses to sync his contacts to google contacts from his smart phone and provide a secrets json file in Secrets directory. Steps shared here.)
+* - [x] To extend this functionality for both lycamobile and lebara reports.
 
 # Reference
 * [Readme markdown-cheatsheet](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md "Readme markdown-cheatsheet")
