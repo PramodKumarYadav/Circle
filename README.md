@@ -16,7 +16,7 @@ Hope this helps in bringing friends and family closer to you.
     * One or more pdfs are allowed in the TestData directory at the same time. 
     * Both Lebara and Lyca pdf reports are allowed in the TestData directory at the same time.
     * You can choose to name these reports as you like (or leave defaults). The tool 'looks' into the reports and finds out what kind of report it is dealing with and acts accordingly.
-    * Note: The only known option (at this moment) at their website is to get a report as PDF download.Thus we deal with PDF as input.
+    * Note: The only known option at both lycamobile and lebara websites is to get a report as PDF download.Thus we deal with PDF as input.
 
 # Design
 1. - [ ] Download account statement(s) from Lycamobile (or Lebara) and copy them to TestData Directory
@@ -25,29 +25,32 @@ Hope this helps in bringing friends and family closer to you.
 2. - [x] Convert PDF to TXT document.
     * Input: PDF call logs file
     * Output: Raw TXT file with calls logs and other irrelevant information.
-3. - [x] Filter out the column header record and data records 
+3. - [x] Filter the data records 
     * Input: Raw TXT file with calls logs and other irrelevant information.
     * Output: A filtered TXT file with only (Voice) call logs.
-4. - [x] Convert TXT to CSV document.
+4. - [x] Make this txt file parceable for csv.
     * Input: A filtered TXT file with only (Voice) call logs.
-    * Output: A filtered CSV file with only (Voice) call logs.
-5. - [x] Get the unique called phone numbers from this csv file.
-    * Input: A filtered CSV file with only (Voice) call logs.
+    * Output: A csv parceable TXT file.
+5. - [x] Convert this csv parceable TXT file to a proper CSV document.
+    * Input: A csv parceable TXT file.
+    * Output: A proper CSV file with headers.
+6. - [x] Get the unique called phone numbers from this csv file.
+    * Input: A proper CSV file with headers.
     * Output: An array of Unique phone numbers called by the user.
-6. - [x] Get the frequency (count of calls per phone number) from this csv file.
-    * Input: A filtered CSV file with only (Voice) call logs.
+7. - [x] Get the frequency (count of calls per phone number) from this csv file.
+    * Input: A proper CSV file with headers.
     * Output: An array of frequency (count of calls/per phone number).
-7. - [x] Get the names from google contacts: [If user has signed up for this](./Secrets/Readme.md)
+8. - [x] Get the names from google contacts: [If user has signed up for this](./Secrets/Readme.md)
     * Input: Phone numbers array(point 5) and location of Secrets Json. 
     * Output: An array of Names corresponding to these called numbers.
-8. - [x] Make a matrix with these three parameters  
+9. - [x] Make a matrix with these three parameters  
     * Note: Goal is to create this matrix is such a way, that it can be used to create any output format as desired
     * Input: An array of Unique phone numbers; their corresponding frequency array; and their corresponding names
     * Output: A hastable collection array that can be converted to any format (as per the request of user)
-9. - [x] Sort this matrix in the descending order of call frequency (since there is value in knowing who we called most to least)
+10. - [x] Sort this matrix in the descending order of call frequency (since there is value in knowing who we called most to least)
     * Input: An unsorted hashtable array from previous step.
     * Output: A sorted hashtable array.
-10. - [x] Display the result as json/csv/table (what you like)
+11. - [x] Display the result as json/csv/table (what you like)
     * Input: A sorted hastable collection array that can be converted to any format (as per the request of user)
     * Output: Based on the choice made by user in the main.ps1, it could be a JSON/CSV/Table output (All outputs or any combination, possible at any given time)
 
