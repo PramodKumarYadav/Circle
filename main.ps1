@@ -8,5 +8,4 @@ foreach($module in $modules){
 }
 
 # You only need to pass the root directory information. Rest all paths are used relative to root directory in scripts.
-# Get-Circle -RootDir "$PSScriptRoot" -SaveAsJSON -SaveAsCSV -SaveAsTable -Verbose 
-Get-Circle -RootDir "pramod" -SaveAsJSON -SaveAsCSV -SaveAsTable -Verbose 
+Get-Circle -RootDir "$PSScriptRoot" -SaveAsJSON -SaveAsCSV -SaveAsTable -Verbose 
