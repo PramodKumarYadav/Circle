@@ -6,6 +6,7 @@ Write-Host "We are in the main.Tests.ps1 file now..."
 
 Describe "main" {
     It "does something useful" {
-        $true | Should -Be $false
+        Mock Get-Circle { return 1}
+        Get-Circle -RootDir "$PSScriptRoot" -SaveAsJSON -SaveAsCSV -SaveAsTable -Verbose  | Should -Be 1
     }
 }
