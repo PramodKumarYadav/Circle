@@ -21,10 +21,10 @@ function Get-Circle{
             Write-Host "No input file to analyse. Provide a pdf call log at location: $RootDir\TestData\*.pdf"
             Write-Host "Exiting program!"
 
-            Describe "Get-Circle Test"{
+            Describe "Get-Circle Pester Test"{
                 Context "when user forgets to provide input pdf file to analyse" {
-                    It "exits the program, with a warning to provide input files"{
-                        $false| should be $true
+                    It "Exit's the program, with a warning to provide input files"{
+                        $false| Should -Be $true
                     }
                 }
             }
