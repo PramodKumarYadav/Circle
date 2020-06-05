@@ -3,4 +3,4 @@ version: "3.7"
 services:
   sut:
     build: .
-    command: [ "pwsh", "-File", "/circle/main2.ps1" ]
+    command: [ "pwsh", "-File", "/circle/main.Tests.ps1" ]

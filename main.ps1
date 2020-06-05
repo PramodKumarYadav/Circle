@@ -7,8 +7,5 @@ foreach($module in $modules){
     Import-Module $module -Force
 }
 
-# To run pester tests
-Import-Module Pester -Force
-
 # You only need to pass the root directory information. Rest all paths are used relative to root directory in scripts.
 Get-Circle -RootDir "$PSScriptRoot" -SaveAsJSON -SaveAsCSV -SaveAsTable -Verbose 
