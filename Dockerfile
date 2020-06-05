@@ -3,6 +3,9 @@ FROM mcr.microsoft.com/powershell
 WORKDIR /circle
 COPY . /circle/
 
+# Install Pester
+RUN pwsh -Command Install-Module -Name Pester -Force
+
 # Execute and exit mode
 ENTRYPOINT [ "pwsh", "-File", "/circle/main.ps1" ]
 
