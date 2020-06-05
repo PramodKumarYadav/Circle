@@ -7,6 +7,7 @@ foreach($module in $modules){
     Import-Module $module -Force
 }
 
+Install-Module -Name Pester -Force
 Import-Module Pester
 
 # You only need to pass the root directory information. Rest all paths are used relative to root directory in scripts.
