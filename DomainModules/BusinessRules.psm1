@@ -3,20 +3,22 @@ function Get-ReportType {
 	param(
             [String]$Path 
         )
-    
-    # list of all reports that the framework can handle
-    $reportTypes = @('Lycamobile','Lebara')
-    foreach($report in $reportTypes){
-        $result = Get-Content -Path $Path -Raw | Select-String $report
 
-        if($result){
-            Write-Host "Input PDF is a $report report. Processing now..."
-            return $report
+    # Get list of all pdfs that are defined in appsettings.json
+    $inputFile  = '.\appsettings.json'
+    $json = Get-Content -Raw -Path $inputFile | ConvertFrom-Json
+
+    $names = $json.psobject.properties.name
+    foreach($name in $names){
+        $pdfType = Get-Content -Path $Path -Raw | Select-String "$name"
+        if($pdfType){
+            Write-Host "Input PDF is a $name type. Processing now..."
+            return $name
         }
     }
 
-    # If neither of above, return, not found and break
-    Write-Host "Input PDF is not a $reportTypes report. Cannot process!"
+    # If the pdf is not one from defined in appsettings.json, return, not found and break
+    Write-Host "Input PDF is not any of $names from appsettings.json. Cannot process!"
     return 'Unknown'
 }
 # Convert Raw Txt to a parseable csv file and return the path
