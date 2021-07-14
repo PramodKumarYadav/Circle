@@ -1,5 +1,10 @@
 # ☎ : Circle 
 
+![GitHub contributors](https://img.shields.io/github/contributors/pramodkumaryadav/Circle)
+![GitHub Release Date](https://img.shields.io/github/release-date/pramodkumaryadav/circle)
+![GitHub last commit](https://img.shields.io/github/last-commit/pramodkumaryadav/circle)
+![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/pramodkumaryadav/circle/1.0/master)
+
 The idea behind the project is to see how our social health is. We have hundreds of contacts in our call list and yet there are often a handful of people we call. This tool, will give you insight on who in your friends and family are most closest to you and thus by contrast, who are the people who were once very close to you but you never or seldom call.
 
 It does this by parsing the pdf phone call record from your service provider and creating insights on who you called and how often (with their names & numbers).
